@@ -93,6 +93,7 @@ const generaDomanda = () => {
   welcome.style.display = "none";
   const benchmark = document.getElementById("benchmark");
   benchmark.style.display = "block";
+  //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
   const domanda = document.createElement("h1");
   domanda.innerText = questions[questionNumber].question;
