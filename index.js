@@ -92,21 +92,24 @@ const generaDomanda = () => {
   const welcome = document.getElementById("welcome");
   welcome.style.display = "none";
   const benchmark = document.getElementById("benchmark");
-  benchmark.style.displayblock;
+  benchmark.style.display = "block";
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
   const domanda = document.createElement("h1");
   domanda.innerText = questions[questionNumber].question;
+  benchmark.appendChild(domanda);
   const risposte = document.createElement("ul");
-  for (let i = 0; i < arrayDomande.length; i++) {
-    let posDomanda = Math.floor(Math.random() * arrayDomande.length);
+  const x = arrayDomande.length;
+  for (let i = 0; i < x; i++) {
+    const posDomanda = Math.floor(Math.random() * arrayDomande.length);
     const li = document.createElement("li");
     li.innerText = arrayDomande[posDomanda];
     arrayDomande.splice(posDomanda, 1);
+    console.log(arrayDomande);
     risposte.appendChild(li);
     console.log(li);
   }
-  benchmark.appendChild(domanda);
   benchmark.appendChild(risposte);
+  console.log(benchmark);
 };
 
 const buttonWelcom = document.getElementById("buttonWelcom");
