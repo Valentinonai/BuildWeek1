@@ -95,10 +95,13 @@ const generaDomanda = () => {
   const selezione = answer.find((x) => x.checked == true);
   console.dir(answer);
 
-  if (questionNumber > 0 && questionNumber < numDomande) {
+  if (questionNumber > 0 && questionNumber <= numDomande) {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       punteggio++;
     }
+  }
+  if (questionNumber === numDomande) {
+    //TODO Inserire codice che richiama la finestra risultato
   }
   console.log(punteggio);
   const welcome = document.getElementById("welcome");
