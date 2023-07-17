@@ -84,7 +84,7 @@ const questions = [
 
 let punteggio = 0,
   questionNumber = 0;
-const numDomande = prompt("A quante domande vuoi rispondere (1-10)?");
+const numDomande = 10; //prompt("A quante domande vuoi rispondere (1-10)?");
 
 if (numDomande < 1 || numDomande > 10) location.reload(true);
 
@@ -98,19 +98,34 @@ const generaDomanda = () => {
   const domanda = document.createElement("h1");
   domanda.innerText = questions[questionNumber].question;
   benchmark.appendChild(domanda);
-  const risposte = document.createElement("ul");
   const x = arrayDomande.length;
+  //!Creo la lista di risposte
   for (let i = 0; i < x; i++) {
     const posDomanda = Math.floor(Math.random() * arrayDomande.length);
-    const li = document.createElement("li");
-    li.innerText = arrayDomande[posDomanda];
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.classList.add("radioAnswer");
+    radio.name = "answer";
+    const label = document.createElement("label");
+    label.for = "radio";
+    benchmark.appendChild(radio);
+    radio.value = arrayDomande[posDomanda];
+    label.innerText = arrayDomande[posDomanda];
     arrayDomande.splice(posDomanda, 1);
-    console.log(arrayDomande);
-    risposte.appendChild(li);
-    console.log(li);
+    benchmark.appendChild(label);
   }
-  benchmark.appendChild(risposte);
-  console.log(benchmark);
+  //! Controllo la risposta
+  const answer = document.getElementsByClassName("radioAnswer");
+
+  for (let i = 0; i < x; i++) {
+    if (answer[i].cecked === true) {
+      if (answer[i].value === questions[questionNumber].correct_answer) {
+        punteggio++;
+      }
+    }
+  }
+  console.log(punteggio);
+  questionNumber++;
 };
 
 const buttonWelcom = document.getElementById("buttonWelcom");

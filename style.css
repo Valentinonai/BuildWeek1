@@ -80,3 +80,10 @@ button:active {
   margin-inline: 20%;
   font-size: 23px;
 }
+
+.radioAnswer {
+}
+
+.radioAnswer label {
+  color: white;
+}
