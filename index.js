@@ -89,10 +89,30 @@ const numDomande = 10; //prompt("A quante domande vuoi rispondere (1-10)?");
 if (numDomande < 1 || numDomande > 10) location.reload(true);
 
 const generaDomanda = () => {
+  let answer = document.getElementsByClassName("radioAnswer");
+  answer = Array.from(answer);
+  //! Controllo la risposta
+  const selezione = answer.find((x) => x.checked == true);
+  console.dir(answer);
+
+  if (questionNumber > 0 && questionNumber < numDomande) {
+    if (selezione.value === questions[questionNumber - 1].correct_answer) {
+      punteggio++;
+    }
+  }
+  console.log(punteggio);
   const welcome = document.getElementById("welcome");
   welcome.style.display = "none";
   const benchmark = document.getElementById("benchmark");
   benchmark.style.display = "block";
+  benchmark.innerHTML = "";
+  const logo = document.createElement("img");
+  logo.src = "./epicode_logo.png";
+  benchmark.appendChild(logo);
+  const timer = document.createElement("div");
+  timer.innerText = "TIMER";
+  benchmark.appendChild(timer);
+  //console.log(punteggio);
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
   const domanda = document.createElement("h1");
@@ -114,17 +134,10 @@ const generaDomanda = () => {
     arrayDomande.splice(posDomanda, 1);
     benchmark.appendChild(label);
   }
-  //! Controllo la risposta
-  const answer = document.getElementsByClassName("radioAnswer");
-
-  for (let i = 0; i < x; i++) {
-    if (answer[i].cecked === true) {
-      if (answer[i].value === questions[questionNumber].correct_answer) {
-        punteggio++;
-      }
-    }
-  }
-  console.log(punteggio);
+  const nextButton = document.createElement("button");
+  nextButton.innerText = "Next";
+  benchmark.appendChild(nextButton);
+  nextButton.onclick = generaDomanda;
   questionNumber++;
 };
 
