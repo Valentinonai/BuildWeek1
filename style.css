@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
+
+#benchmark,
+#review,
+#results {
+  display: none;
+}
+
+body {
+  background-image: url(bg.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: white;
+  padding: 40px 90px;
+  height: 100%;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+}
+
+#welcome p {
+  margin-top: 0;
+}
+
+.button {
+  background-color: #0ff;
+  box-shadow: 0px 0px 40px 10px rgba(0, 255, 255, 0.548);
+  border: none;
+  width: 250px;
+  height: 70px;
+  font-size: 25px;
+  font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
+}
+
+button:active {
+  box-shadow: 2px 2px 5px #f5894d;
+}
+#paragrafoHome {
+  display: inline-block;
+  width: 67%;
+}
+
+#homecheck {
+  margin-top: 60px;
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  outline: 1px solid white;
+  cursor: pointer;
+}
+
+#welcome span {
+  font-weight: bold;
+}
+
+#welcome h1 {
+  width: 650px;
+  margin-block: 70px;
+  font-weight: 400;
+  font-size: 100px;
+  font-family: "Outfit", sans-serif;
+  line-height: 80px;
+}
+
+#welcome ul {
+  line-height: 35px;
+}
+
+#welcome h2 {
+  color: #d20094;
+  margin-bottom: 2px;
+}
+
+#welcome,
+#benchmarck,
+#results,
+#review {
+  margin-block: 30px;
+  margin-inline: 20%;
+  font-size: 23px;
+}
