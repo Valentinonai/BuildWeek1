@@ -85,17 +85,21 @@ const questions = [
 let punteggio = 0,
   questionNumber = 0;
 const numDomande = 10; //prompt("A quante domande vuoi rispondere (1-10)?");
-
+const tTot = 10;
 if (numDomande < 1 || numDomande > 10) location.reload(true);
 
 const generaDomanda = () => {
+  let t = tTot;
+
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
-  //! Controllo la risposta
-  const selezione = answer.find((x) => x.checked == true);
-  console.dir(answer);
+  cerchio.style.strokeDashoffset = 0;
 
-  if (questionNumber > 0 && questionNumber <= numDomande) {
+  //! Controllo la risposta
+
+  const selezione = answer.find((x) => x.checked == true);
+
+  if (questionNumber > 0 && questionNumber <= numDomande && selezione === "undefined") {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       punteggio++;
     }
@@ -108,24 +112,37 @@ const generaDomanda = () => {
   welcome.style.display = "none";
   const benchmark = document.getElementById("benchmark");
   benchmark.style.display = "block";
-  benchmark.innerHTML = "";
-  const logo = document.createElement("img");
-  logo.src = "./epicode_logo.png";
-  benchmark.appendChild(logo);
-  logo.classList.add("logo");
-  const timer = document.createElement("div");
-  timer.innerText = "TIMER";
-  benchmark.appendChild(timer);
+  const quiz = document.getElementById("quiz");
+  quiz.innerHTML = "";
 
-  //console.log(punteggio);
+  //!Timer
+
+  const text = document.getElementById("txt");
+  const circle = document.getElementById("cerchio");
+  text.innerText = t;
+  const myTimer = setInterval(function () {
+    text.innerText = "";
+    t--;
+    text.innerText = t;
+    circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
+    if (t === 0) {
+      clearInterval(myTimer);
+      generaDomanda();
+    }
+  }, 1000);
+
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
+
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
   const domanda = document.createElement("h1");
   domanda.innerText = questions[questionNumber].question;
-  benchmark.appendChild(domanda);
+
   domanda.classList.add("domanda");
+  quiz.appendChild(domanda);
   const x = arrayDomande.length;
+
   //!Creo la lista di risposte
+
   for (let i = 0; i < x; i++) {
     const posDomanda = Math.floor(Math.random() * arrayDomande.length);
     const radio = document.createElement("input");
@@ -142,17 +159,17 @@ const generaDomanda = () => {
     label.innerText = arrayDomande[posDomanda];
     arrayDomande.splice(posDomanda, 1);
     divAnswer.appendChild(label);
-    benchmark.appendChild(divAnswer);
+    quiz.appendChild(divAnswer);
   }
   const nextButton = document.createElement("button");
   nextButton.innerText = "Next";
-  benchmark.appendChild(nextButton);
+  quiz.appendChild(nextButton);
   nextButton.classList.add("nextButton");
   nextButton.onclick = generaDomanda;
+  divQuestionNumber.classList.add("divQuestionNumber");
   const divQuestionNumber = document.createElement("div");
   divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
-  divQuestionNumber.classList.add("divQuestionNumber");
-  benchmark.appendChild(divQuestionNumber);
+  quiz.appendChild(divQuestionNumber);
   questionNumber++;
 };
 
