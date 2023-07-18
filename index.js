@@ -166,8 +166,8 @@ const generaDomanda = () => {
   quiz.appendChild(nextButton);
   nextButton.classList.add("nextButton");
   nextButton.onclick = generaDomanda;
-  divQuestionNumber.classList.add("divQuestionNumber");
   const divQuestionNumber = document.createElement("div");
+  divQuestionNumber.classList.add("divQuestionNumber");
   divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
   quiz.appendChild(divQuestionNumber);
   questionNumber++;
