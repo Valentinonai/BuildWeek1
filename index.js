@@ -90,16 +90,14 @@ if (numDomande < 1 || numDomande > 10) location.reload(true);
 
 const generaDomanda = () => {
   let t = tTot;
-  let myTimer;
+  let myTimer = 1;
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
-  console.log(questionNumber);
   cerchio.style.strokeDashoffset = 0;
 
   //! Controllo la risposta
 
   const selezione = answer.find((x) => x.checked == true);
-  console.dir(answer);
 
   if (questionNumber > 0 && questionNumber <= numDomande && selezione === "undefined") {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
@@ -126,7 +124,6 @@ const generaDomanda = () => {
   const circle = document.getElementById("cerchio");
   text.innerText = t;
   myTimer = setInterval(function () {
-    console.log(myTimer);
     text.innerText = "";
     t--;
     text.innerText = t;
