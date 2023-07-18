@@ -85,12 +85,12 @@ const questions = [
 let punteggio = 0,
   questionNumber = 0;
 const numDomande = 10; //prompt("A quante domande vuoi rispondere (1-10)?");
-const tTot = 60;
+const tTot = 10;
 if (numDomande < 1 || numDomande > 10) location.reload(true);
 
 const generaDomanda = () => {
   let t = tTot;
-  clearInterval();
+  let myTimer;
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
   console.log(questionNumber);
@@ -114,22 +114,26 @@ const generaDomanda = () => {
   benchmark.style.display = "block";
   const quiz = document.getElementById("quiz");
   quiz.innerHTML = "";
+
+  //!Timer
+
   const timer = document.getElementById("timer");
   const out = document.getElementById("out");
   const inner = document.getElementById("in");
   const text = document.getElementById("txt");
   const circle = document.getElementById("cerchio");
   text.innerText = t;
-  setInterval(function () {
+  myTimer = setInterval(function () {
+    console.log(myTimer);
     text.innerText = "";
     t--;
     text.innerText = t;
-    cerchio.style.strokeDashoffset = 472 - (472 * t) / tTot;
+    circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
     if (t === 0) {
+      clearInterval(myTimer);
       generaDomanda();
     }
   }, 1000);
-  //console.log(punteggio);
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
   const domanda = document.createElement("h1");
