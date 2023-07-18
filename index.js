@@ -95,7 +95,9 @@ const generaDomanda = () => {
   answer = Array.from(answer);
   console.log(questionNumber);
   cerchio.style.strokeDashoffset = 0;
+
   //! Controllo la risposta
+
   const selezione = answer.find((x) => x.checked == true);
   console.dir(answer);
 
@@ -134,13 +136,17 @@ const generaDomanda = () => {
       generaDomanda();
     }
   }, 1000);
+
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
+
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
   const domanda = document.createElement("h1");
   domanda.innerText = questions[questionNumber].question;
   quiz.appendChild(domanda);
   const x = arrayDomande.length;
+
   //!Creo la lista di risposte
+
   for (let i = 0; i < x; i++) {
     const posDomanda = Math.floor(Math.random() * arrayDomande.length);
     const radio = document.createElement("input");
