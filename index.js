@@ -88,42 +88,61 @@ let punteggio = 0,
 const numDomande = 10; //prompt("A quante domande vuoi rispondere (1-10)?");
 const tTot = 10;
 if (numDomande < 1 || numDomande > 10) location.reload(true);
-//!Timer
-const tempo = () => {
-  let t = tTot;
-  const text = document.getElementById("txt");
-  const circle = document.getElementById("cerchio");
-  text.innerText = t;
-  myTimer = setInterval(function () {
-    text.innerText = "";
-    t--;
-    text.innerText = t;
-    circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
-    if (t === 0) {
-      clearInterval(myTimer);
-      generaDomanda();
-    }
-  }, 1000);
-};
-const cancellaTempo = () => {
-  clearInterval(myTimer);
-};
-const generaDomanda = () => {
+
+const controlla = () => {
+  console.log("....................");
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
-  cerchio.style.strokeDashoffset = 0;
-
-  //! Controllo la risposta
-
-  const selezione = answer.find((x) => x.checked == true);
-
-  if (questionNumber > 0 && questionNumber <= numDomande && selezione === "undefined") {
+  const selezione = answer.find((x) => x.checked === true);
+  console.log(selezione.value);
+  if (selezione !== "undefined") {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       punteggio++;
     }
   }
+  console.log(punteggio);
+};
+
+const generaDomanda = () => {
+  cerchio.style.strokeDashoffset = 0;
+
+  //!Timer
+  const tempo = () => {
+    let t = tTot;
+    const text = document.getElementById("txt");
+    const circle = document.getElementById("cerchio");
+    text.innerText = t;
+    myTimer = setInterval(function () {
+      text.innerText = "";
+      t--;
+      text.innerText = t;
+      circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
+      if (t === 0) {
+        clearInterval(myTimer);
+        generaDomanda();
+      }
+    }, 1000);
+  };
+  const cancellaTempo = () => {
+    clearInterval(myTimer);
+  };
+
+  //! Controllo la risposta
+  // if (questionNumber !== 0) {
+  // }
+  // console.log(selezione, questionNumber);
+  // if (selezione === "undefined" && questionNumber > 0) {
+  //   generaDomanda();
+  // }
+  // console.log(selezione, questionNumber);
+  // if (questionNumber > 0 && questionNumber <= numDomande && questionNumber !== "undefined") {
+  //   if (selezione.value === questions[questionNumber - 1].correct_answer) {
+  //     punteggio++;
+  //   }
+  // } else generaDomanda();
   if (questionNumber === numDomande) {
     //TODO Inserire codice che richiama la finestra risultato
+    alert(`Risposte esatte ${punteggio}`);
   }
   const welcome = document.getElementById("welcome");
   welcome.style.display = "none";
@@ -132,7 +151,7 @@ const generaDomanda = () => {
   const quiz = document.getElementById("quiz");
   quiz.innerHTML = "";
 
-  tempo();
+  // tempo();
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
 
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
@@ -167,8 +186,14 @@ const generaDomanda = () => {
   nextButton.innerText = "Next";
   quiz.appendChild(nextButton);
   nextButton.classList.add("nextButton");
+  console.log("**********");
+  nextButton.addEventListener("click", controlla);
+  console.log("-----------");
   nextButton.addEventListener("click", cancellaTempo);
-  nextButton.onclick = generaDomanda;
+  console.log("!!!!!!!!!");
+  nextButton.addEventListener("click", generaDomanda);
+
+  // nextButton.onclick = generaDomanda;
   const divQuestionNumber = document.createElement("div");
   divQuestionNumber.classList.add("divQuestionNumber");
   divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
