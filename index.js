@@ -82,15 +82,33 @@ const questions = [
   },
 ];
 
+let myTimer = null;
 let punteggio = 0,
   questionNumber = 0;
 const numDomande = 10; //prompt("A quante domande vuoi rispondere (1-10)?");
 const tTot = 10;
 if (numDomande < 1 || numDomande > 10) location.reload(true);
-
-const generaDomanda = () => {
+//!Timer
+const tempo = () => {
   let t = tTot;
-
+  const text = document.getElementById("txt");
+  const circle = document.getElementById("cerchio");
+  text.innerText = t;
+  myTimer = setInterval(function () {
+    text.innerText = "";
+    t--;
+    text.innerText = t;
+    circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
+    if (t === 0) {
+      clearInterval(myTimer);
+      generaDomanda();
+    }
+  }, 1000);
+};
+const cancellaTempo = () => {
+  clearInterval(myTimer);
+};
+const generaDomanda = () => {
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
   cerchio.style.strokeDashoffset = 0;
@@ -107,7 +125,6 @@ const generaDomanda = () => {
   if (questionNumber === numDomande) {
     //TODO Inserire codice che richiama la finestra risultato
   }
-  console.log(punteggio);
   const welcome = document.getElementById("welcome");
   welcome.style.display = "none";
   const benchmark = document.getElementById("benchmark");
@@ -117,20 +134,21 @@ const generaDomanda = () => {
 
   //!Timer
 
-  const text = document.getElementById("txt");
-  const circle = document.getElementById("cerchio");
-  text.innerText = t;
-  const myTimer = setInterval(function () {
-    text.innerText = "";
-    t--;
-    text.innerText = t;
-    circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
-    if (t === 0) {
-      clearInterval(myTimer);
-      generaDomanda();
-    }
-  }, 1000);
+  // const text = document.getElementById("txt");
+  // const circle = document.getElementById("cerchio");
+  // text.innerText = t;
+  // myTimer = setInterval(function () {
+  //   text.innerText = "";
+  //   t--;
+  //   text.innerText = t;
+  //   circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
+  //   if (t === 0) {
+  //     clearInterval(myTimer);
+  //     generaDomanda();
+  //   }
+  // }, 1000);
 
+  tempo();
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
 
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
@@ -165,12 +183,13 @@ const generaDomanda = () => {
   nextButton.innerText = "Next";
   quiz.appendChild(nextButton);
   nextButton.classList.add("nextButton");
+  nextButton.addEventListener("click", cancellaTempo);
   nextButton.onclick = generaDomanda;
   const divQuestionNumber = document.createElement("div");
   divQuestionNumber.classList.add("divQuestionNumber");
   divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
   quiz.appendChild(divQuestionNumber);
-  divQuestionNumber.classList.add("divQuestionNumber");
+
   questionNumber++;
 };
 
