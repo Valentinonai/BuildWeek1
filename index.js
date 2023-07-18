@@ -75,8 +75,8 @@ const questions = [
   {
     category: "Science: Computers",
     type: "multiple",
-    difficulty: "easy",
     question: "Which programming language shares its name with an island in Indonesia?",
+    difficulty: "easy",
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
@@ -89,8 +89,8 @@ const numDomande = 10; //prompt("A quante domande vuoi rispondere (1-10)?");
 const tTot = 10;
 if (numDomande < 1 || numDomande > 10) location.reload(true);
 
+//! Controllo la risposta
 const controlla = () => {
-  console.log("....................");
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
   const selezione = answer.find((x) => x.checked === true);
@@ -127,19 +127,6 @@ const generaDomanda = () => {
     clearInterval(myTimer);
   };
 
-  //! Controllo la risposta
-  // if (questionNumber !== 0) {
-  // }
-  // console.log(selezione, questionNumber);
-  // if (selezione === "undefined" && questionNumber > 0) {
-  //   generaDomanda();
-  // }
-  // console.log(selezione, questionNumber);
-  // if (questionNumber > 0 && questionNumber <= numDomande && questionNumber !== "undefined") {
-  //   if (selezione.value === questions[questionNumber - 1].correct_answer) {
-  //     punteggio++;
-  //   }
-  // } else generaDomanda();
   if (questionNumber === numDomande) {
     //TODO Inserire codice che richiama la finestra risultato
     alert(`Risposte esatte ${punteggio}`);
@@ -151,7 +138,6 @@ const generaDomanda = () => {
   const quiz = document.getElementById("quiz");
   quiz.innerHTML = "";
 
-  // tempo();
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
 
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
@@ -186,18 +172,15 @@ const generaDomanda = () => {
   nextButton.innerText = "Next";
   quiz.appendChild(nextButton);
   nextButton.classList.add("nextButton");
-  console.log("**********");
   nextButton.addEventListener("click", controlla);
-  console.log("-----------");
   nextButton.addEventListener("click", cancellaTempo);
-  console.log("!!!!!!!!!");
   nextButton.addEventListener("click", generaDomanda);
 
-  // nextButton.onclick = generaDomanda;
   const divQuestionNumber = document.createElement("div");
   divQuestionNumber.classList.add("divQuestionNumber");
   divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
   quiz.appendChild(divQuestionNumber);
+  tempo();
 
   questionNumber++;
 };
