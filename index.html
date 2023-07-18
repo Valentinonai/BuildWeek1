@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="welcome" class="background">
+      <header>
+        <img src="epicode_logo.png" alt="error" width="250px" />
+
+        <h1>Welcome to <span>your exam</span></h1>
+      </header>
+      <h2>Instructions</h2>
+      <p>
+        We don't expect most engineers to know the answers to all of these questions, <br />
+        so don't worry if you're unsure of a few of them.
+      </p>
+      <ul>
+        <li>Each question is <span>timed</span> and can only be <span>answered once.</span></li>
+        <li>Changing browser tab or opening other windoews will <span> invalidate the question.</span></li>
+        <li>This exam will take approx. <span>0-5 minutes.</span></li>
+      </ul>
+      <p id="paragrafoHome">
+        <input id="homecheck" type="checkbox" required /> I promise to answer myself without help from anyone
+      </p>
+
+      <button id="buttonWelcom" class="button">PROCEED</button>
+    </div>
+
+    <div id="benchmark" class="background"></div>
+
+    <div id="results" class="background">
+      <div class="correct-section">
+        <span class="progress-value"></span>
+      </div>
+
+      <div class="wrong-section">
+        <span class="percent"></span>
+      </div>
+
+      <div class="logo">
+        <img src="epicode_logo.png" alt="error" />
+      </div>
+    </div>
+
+    <div id="review" class="background">
+      <div class="logo">
+        <img src="epicode_logo.png" alt="error" />
+      </div>
+
+      <h1>Tell us..</h1>
+      <h2>From..</h2>
+      <div class="rateStar"></div>
+      <div class="rateStar"></div>
+      <div class="rateStar"></div>
+      <div class="rateStar"></div>
+      <div class="rateStar"></div>
+      <div class="rateStar"></div>
+      <div class="rateStar"></div>
+      <div class="rateStar"></div>
+      <div class="rateStar"></div>
+      <div class="rateStar"></div>
+      <h3>leave..</h3>
+      <input type="text" name="" id="inputReview" required />
+      <button class="Button"></button>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
