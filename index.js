@@ -85,17 +85,18 @@ const questions = [
 let punteggio = 0,
   questionNumber = 0;
 const numDomande = 10; //prompt("A quante domande vuoi rispondere (1-10)?");
-
 if (numDomande < 1 || numDomande > 10) location.reload(true);
 
 const generaDomanda = () => {
+  let t = 10;
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
+  console.log(questionNumber);
   //! Controllo la risposta
   const selezione = answer.find((x) => x.checked == true);
   console.dir(answer);
 
-  if (questionNumber > 0 && questionNumber <= numDomande) {
+  if (questionNumber > 0 && questionNumber <= numDomande && selezione === "undefined") {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       punteggio++;
     }
@@ -113,9 +114,15 @@ const generaDomanda = () => {
   logo.src = "./epicode_logo.png";
   benchmark.appendChild(logo);
   const timer = document.createElement("div");
-  timer.innerText = "TIMER";
+  timer.innerText = t;
+
   setInterval(function () {
-    element.innerHTML += "Hello";
+    timer.innerText = "";
+    t--;
+    timer.innerText = t;
+    if (t === 0) {
+      generaDomanda();
+    }
   }, 1000);
   benchmark.appendChild(timer);
   //console.log(punteggio);
