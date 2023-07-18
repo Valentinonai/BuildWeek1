@@ -170,6 +170,7 @@ const generaDomanda = () => {
   divQuestionNumber.classList.add("divQuestionNumber");
   divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
   quiz.appendChild(divQuestionNumber);
+  divQuestionNumber.classList.add("divQuestionNumber");
   questionNumber++;
 };
 
