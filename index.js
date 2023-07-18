@@ -90,7 +90,7 @@ if (numDomande < 1 || numDomande > 10) location.reload(true);
 
 const generaDomanda = () => {
   let t = tTot;
-  let myTimer = 1;
+
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
   cerchio.style.strokeDashoffset = 0;
@@ -117,13 +117,10 @@ const generaDomanda = () => {
 
   //!Timer
 
-  const timer = document.getElementById("timer");
-  const out = document.getElementById("out");
-  const inner = document.getElementById("in");
   const text = document.getElementById("txt");
   const circle = document.getElementById("cerchio");
   text.innerText = t;
-  myTimer = setInterval(function () {
+  const myTimer = setInterval(function () {
     text.innerText = "";
     t--;
     text.innerText = t;
