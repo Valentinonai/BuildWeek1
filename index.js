@@ -114,6 +114,9 @@ const generaDomanda = () => {
   benchmark.appendChild(logo);
   const timer = document.createElement("div");
   timer.innerText = "TIMER";
+  setInterval(function () {
+    element.innerHTML += "Hello";
+  }, 1000);
   benchmark.appendChild(timer);
   //console.log(punteggio);
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
