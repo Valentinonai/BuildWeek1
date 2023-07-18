@@ -137,8 +137,9 @@ button:active {
 
   display: inline-block;
   width: 400px;
-  margin-inline: 30%;
-  text-align: center;
+  margin-left: 40%;
+  margin-right: 40%;
+  text-align: left;
 }
 .nextButton {
   width: 150px;
