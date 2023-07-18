@@ -85,13 +85,16 @@ const questions = [
 let punteggio = 0,
   questionNumber = 0;
 const numDomande = 10; //prompt("A quante domande vuoi rispondere (1-10)?");
+const tTot = 60;
 if (numDomande < 1 || numDomande > 10) location.reload(true);
 
 const generaDomanda = () => {
-  let t = 10;
+  let t = tTot;
+  clearInterval();
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
   console.log(questionNumber);
+  cerchio.style.strokeDashoffset = 0;
   //! Controllo la risposta
   const selezione = answer.find((x) => x.checked == true);
   console.dir(answer);
@@ -109,28 +112,29 @@ const generaDomanda = () => {
   welcome.style.display = "none";
   const benchmark = document.getElementById("benchmark");
   benchmark.style.display = "block";
-  benchmark.innerHTML = "";
-  const logo = document.createElement("img");
-  logo.src = "./epicode_logo.png";
-  benchmark.appendChild(logo);
-  const timer = document.createElement("div");
-  timer.innerText = t;
-
+  const quiz = document.getElementById("quiz");
+  quiz.innerHTML = "";
+  const timer = document.getElementById("timer");
+  const out = document.getElementById("out");
+  const inner = document.getElementById("in");
+  const text = document.getElementById("txt");
+  const circle = document.getElementById("cerchio");
+  text.innerText = t;
   setInterval(function () {
-    timer.innerText = "";
+    text.innerText = "";
     t--;
-    timer.innerText = t;
+    text.innerText = t;
+    cerchio.style.strokeDashoffset = 472 - (472 * t) / tTot;
     if (t === 0) {
       generaDomanda();
     }
   }, 1000);
-  benchmark.appendChild(timer);
   //console.log(punteggio);
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
   const domanda = document.createElement("h1");
   domanda.innerText = questions[questionNumber].question;
-  benchmark.appendChild(domanda);
+  quiz.appendChild(domanda);
   const x = arrayDomande.length;
   //!Creo la lista di risposte
   for (let i = 0; i < x; i++) {
@@ -147,15 +151,15 @@ const generaDomanda = () => {
     label.innerText = arrayDomande[posDomanda];
     arrayDomande.splice(posDomanda, 1);
     divAnswer.appendChild(label);
-    benchmark.appendChild(divAnswer);
+    quiz.appendChild(divAnswer);
   }
   const nextButton = document.createElement("button");
   nextButton.innerText = "Next";
-  benchmark.appendChild(nextButton);
+  quiz.appendChild(nextButton);
   nextButton.onclick = generaDomanda;
   const divQuestionNumber = document.createElement("div");
   divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
-  benchmark.appendChild(divQuestionNumber);
+  quiz.appendChild(divQuestionNumber);
   questionNumber++;
 };
 
