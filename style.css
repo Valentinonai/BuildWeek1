@@ -13,10 +13,9 @@
 body {
   background-image: url(bg.jpg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   color: white;
-  padding: 40px 90px;
-  height: 100%;
+  padding: 10px 90px 5px;
   margin: 0 auto;
   font-family: "Inter", sans-serif;
 }
@@ -63,7 +62,7 @@ button:active {
 }
 #welcome h1 {
   width: 650px;
-  margin-block: 90px;
+  margin-block: 60px;
   font-weight: 400;
   font-size: 100px;
   font-family: "Outfit", sans-serif;
@@ -107,15 +106,15 @@ button:active {
 }
 .domanda {
   font-size: 40px;
-  margin-top: 60px;
+  margin-top: 30px;
   margin-bottom: 60px;
   margin-inline: auto;
   width: 800px;
   text-align: center;
+  font-size: 25px;
 }
 .radioAnswer {
   display: inline-block;
-  /* appearance: none; */
   width: 60px;
   height: 20px;
   color: rgba(65, 65, 65, 0.378);
@@ -148,11 +147,14 @@ button:active {
   border-radius: 10px;
   color: white;
   margin-top: 40px;
-  box-shadow: 0px 0px 20px 3px #d20093cc;
+  box-shadow: 0px 0px 15px 8px #d20093cc;
   border: none;
   display: block;
+  cursor: pointer;
 }
-
+.nextButton:active {
+  box-shadow: 0px 0px 8px 4px #d20093;
+}
 #review h1 {
   text-align: center;
   font-size: 80px;
@@ -198,7 +200,7 @@ button:active {
 /* Timer */
 #benchmark header {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 #timer {
@@ -212,7 +214,6 @@ button:active {
   width: 160px;
   border-radius: 50%;
   padding: 20px;
-  /* box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15), -6px -6px 10px -1px rgba(255, 255, 255, 0.7); */
 }
 #in {
   height: 120px;
@@ -221,9 +222,6 @@ button:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2), inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7), 
-    -0.5px -0.5px 0px rgba(255, 255, 255, 1), 0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
-    0px 12px 10px - 10px rgba(0, 0, 0, p 0.05);*/
 }
 
 #txt {

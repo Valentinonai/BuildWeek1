@@ -184,6 +184,13 @@ const generaDomanda = () => {
 
   questionNumber++;
 };
-
+const start = () => {
+  console.log(check.checked);
+  if (check.checked === true) buttonWelcom.disabled = false;
+  else buttonWelcom.disabled = true;
+};
 const buttonWelcom = document.getElementById("buttonWelcom");
+const check = document.getElementById("homecheck");
+check.addEventListener("change", start);
 buttonWelcom.onclick = generaDomanda;
+console.log(check);
