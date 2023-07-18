@@ -112,15 +112,18 @@ const generaDomanda = () => {
   const logo = document.createElement("img");
   logo.src = "./epicode_logo.png";
   benchmark.appendChild(logo);
+  logo.classList.add("logo");
   const timer = document.createElement("div");
   timer.innerText = "TIMER";
   benchmark.appendChild(timer);
+
   //console.log(punteggio);
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
   const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
   const domanda = document.createElement("h1");
   domanda.innerText = questions[questionNumber].question;
   benchmark.appendChild(domanda);
+  domanda.classList.add("domanda");
   const x = arrayDomande.length;
   //!Creo la lista di risposte
   for (let i = 0; i < x; i++) {
@@ -131,8 +134,10 @@ const generaDomanda = () => {
     radio.name = "answer";
     const label = document.createElement("label");
     label.for = "radio";
+    label.classList.add("label");
     const divAnswer = document.createElement("div");
     divAnswer.appendChild(radio);
+    divAnswer.classList.add("divAnswer");
     radio.value = arrayDomande[posDomanda];
     label.innerText = arrayDomande[posDomanda];
     arrayDomande.splice(posDomanda, 1);
@@ -142,9 +147,11 @@ const generaDomanda = () => {
   const nextButton = document.createElement("button");
   nextButton.innerText = "Next";
   benchmark.appendChild(nextButton);
+  nextButton.classList.add("nextButton");
   nextButton.onclick = generaDomanda;
   const divQuestionNumber = document.createElement("div");
   divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
+  divQuestionNumber.classList.add("divQuestionNumber");
   benchmark.appendChild(divQuestionNumber);
   questionNumber++;
 };

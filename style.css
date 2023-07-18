@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
 
 #benchmark,
-#review,
+#welcome,
 #results {
   display: none;
+  margin: 30px;
+  margin-inline: 30px;
 }
-
+#review {
+  margin-inline: 30px;
+}
 body {
   background-image: url(bg.jpg);
   background-repeat: no-repeat;
@@ -38,7 +42,8 @@ button:active {
 }
 #paragrafoHome {
   display: inline-block;
-  width: 67%;
+  width: 30%;
+  font-size: medium;
 }
 
 #homecheck {
@@ -53,10 +58,12 @@ button:active {
 #welcome span {
   font-weight: bold;
 }
-
+#welcome p {
+  font-size: large;
+}
 #welcome h1 {
   width: 650px;
-  margin-block: 70px;
+  margin-block: 90px;
   font-weight: 400;
   font-size: 100px;
   font-family: "Outfit", sans-serif;
@@ -65,11 +72,13 @@ button:active {
 
 #welcome ul {
   line-height: 35px;
+  font-size: large;
 }
 
 #welcome h2 {
   color: #d20094;
-  margin-bottom: 2px;
+  margin-bottom: 15px;
+  font-size: xx-large;
 }
 
 #welcome,
@@ -77,8 +86,9 @@ button:active {
 #results,
 #review {
   margin-block: 30px;
-  margin-inline: 20%;
-  font-size: 23px;
+  margin-inline: 30px;
+  font-size: 18px;
+  margin-bottom: 60px;
 }
 
 .radioAnswer label {
@@ -86,4 +96,101 @@ button:active {
 }
 .spanColor {
   color: #d20094;
+}
+
+#paragrafoHome {
+  display: inline-block;
+  width: 70%;
+}
+.logo {
+  width: 200px;
+}
+.domanda {
+  font-size: 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  margin-inline: auto;
+  width: 800px;
+  text-align: center;
+}
+.radioAnswer {
+  display: inline-block;
+  /* appearance: none; */
+  width: 60px;
+  height: 20px;
+  color: rgba(65, 65, 65, 0.378);
+  border: 2px solid color rgba(69, 68, 68, 0.122);
+}
+.label {
+  font-family: "Inter", sans-serif;
+  font-size: x-large;
+  font-weight: 700;
+}
+.divQuestionNumber {
+  text-align: center;
+  font-size: x-large;
+  margin-top: 50px;
+  text-align: bottom;
+}
+.divAnswer {
+  padding-bottom: 30px;
+
+  display: inline-block;
+  width: 400px;
+  margin-inline: 30%;
+  text-align: center;
+}
+.nextButton {
+  width: 150px;
+  height: 50px;
+  background-color: #d20093;
+  border-radius: 10px;
+  color: white;
+  margin-top: 40px;
+  box-shadow: 0px 0px 20px 3px #d20093cc;
+  border: none;
+  display: block;
+}
+
+#review h1 {
+  text-align: center;
+  font-size: 80px;
+  margin-top: 100px;
+  font-family: "Outfit", sans-serif;
+  margin-bottom: 20px;
+}
+#review h2 {
+  text-align: center;
+  width: 1000px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-size: x-large;
+}
+
+#review h3 {
+  text-align: center;
+  width: 1000px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  margin-top: 80px;
+  display: block;
+  font-size: x-large;
+}
+#inputReview {
+  font-family: "Inter", sans-serif;
+  font-size: large;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #d20093;
+  background-color: transparent;
+  width: 1000px;
+  display: block;
+  margin-block: 40px;
+  margin-bottom: 100px;
+  padding-bottom: 10px;
+}
+#button2 {
+  margin-inline: 40%;
+  text-align: center;
 }
