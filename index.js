@@ -132,22 +132,6 @@ const generaDomanda = () => {
   const quiz = document.getElementById("quiz");
   quiz.innerHTML = "";
 
-  //!Timer
-
-  // const text = document.getElementById("txt");
-  // const circle = document.getElementById("cerchio");
-  // text.innerText = t;
-  // myTimer = setInterval(function () {
-  //   text.innerText = "";
-  //   t--;
-  //   text.innerText = t;
-  //   circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
-  //   if (t === 0) {
-  //     clearInterval(myTimer);
-  //     generaDomanda();
-  //   }
-  // }, 1000);
-
   tempo();
   //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
 
