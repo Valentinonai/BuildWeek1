@@ -131,16 +131,21 @@ const generaDomanda = () => {
     radio.name = "answer";
     const label = document.createElement("label");
     label.for = "radio";
-    benchmark.appendChild(radio);
+    const divAnswer = document.createElement("div");
+    divAnswer.appendChild(radio);
     radio.value = arrayDomande[posDomanda];
     label.innerText = arrayDomande[posDomanda];
     arrayDomande.splice(posDomanda, 1);
-    benchmark.appendChild(label);
+    divAnswer.appendChild(label);
+    benchmark.appendChild(divAnswer);
   }
   const nextButton = document.createElement("button");
   nextButton.innerText = "Next";
   benchmark.appendChild(nextButton);
   nextButton.onclick = generaDomanda;
+  const divQuestionNumber = document.createElement("div");
+  divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
+  benchmark.appendChild(divQuestionNumber);
   questionNumber++;
 };
 
