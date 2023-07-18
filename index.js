@@ -175,34 +175,3 @@ const generaDomanda = () => {
 
 const buttonWelcom = document.getElementById("buttonWelcom");
 buttonWelcom.onclick = generaDomanda;
-
-//grafico a torta results, funzione non corretta.
-let testScore = 78; //per test
-
-let progressEndValue = testScore;
-
-let circularProgress = document.querySelector(".circular-progress"),
-  progressValue = document.querySelector(".progress-value");
-
-let progressStartValue = 0,
-  speed = 20;
-
-let progress = setInterval(() => {
-  progressStartValue++;
-
-  progressValue.textContent = `${progressStartValue}%`;
-  circularProgress.style.background = `conic-gradient(#0ff ${progressStartValue * 3}deg, #d20094)`;
-
-  if (progressStartValue == progressEndValue) {
-    clearInterval(progress);
-  }
-}, speed);
-
-progressStartValue++;
-
-progressValue.textContent = `${progressStartValue}%`;
-circularProgress.style.background = `conic-gradient(#7d2ae8 ${progressStartValue * 3}deg, #d20094)`;
-
-if (progressStartValue == progressEndValue) {
-  clearInterval(progress);
-}
