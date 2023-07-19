@@ -151,18 +151,11 @@ const generaDomanda = () => {
 
 const buttonWelcom = document.getElementById("buttonWelcom");
 buttonWelcom.onclick = generaDomanda;
-<<<<<<< Updated upstream
-77dhvcuywb
-=======
 console.log(check);
 
 const Star = document.getElementsByClassName("rateStar");
 
 console.log(Star);
-// function star() {
-//   for (let i = 0; i < Star.length; i++);
-//   Star[i].currentTarget.style.filter = "brightness (100%)";
-// }
 const stars = document.getElementsByClassName("rateStar");
 const stella = Array.from(stars);
 function star(event) {
@@ -175,4 +168,3 @@ function star(event) {
     stars[i].classList.add("starOn");
   }
 }
->>>>>>> Stashed changes
