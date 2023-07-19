@@ -542,15 +542,16 @@ const controllaLive = () => {
   let label = document.getElementsByClassName("label");
   answer = Array.from(answer);
   label = Array.from(label);
-
   const selezione = answer.find((x) => x.checked === true);
   const selezione2 = label.find((x) => x.innerText === selezione.value);
 
   if (selezione !== "undefined") {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       selezione2.classList.add("Green");
+      answer.map((x) => (x.disabled = true));
     } else {
       selezione2.classList.add("Red");
+      answer.map((x) => (x.disabled = true));
     }
   }
 };
