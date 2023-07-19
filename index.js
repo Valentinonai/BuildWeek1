@@ -536,9 +536,26 @@ const datiIniziali = () => {
 const startButton = document.getElementById("startScelte");
 startButton.onclick = datiIniziali;
 //TODO------------------------------------------------------------------------------
+//?----------------------------Controllo risposta live------------------------------
+const controllaLive = () => {
+  let answer = document.getElementsByClassName("radioAnswer");
+  answer = Array.from(answer);
+  const selezione = answer.find((x) => x.checked === true);
+  if (selezione !== "undefined") {
+    if (selezione.value === questions[questionNumber - 1].correct_answer) {
+      nextButton.classList.add("Green");
+    } else {
+      nextButton.classList.add("Red");
+    }
+  }
+  console.log(punteggio);
+};
 
+//?---------------------------------------------------------------------------------
 //! Controllo la risposta
 const controlla = () => {
+  // nextButton.classList.remove("buttonGreen");
+  // nextButton.classList.remove("buttonGreen");
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
   const selezione = answer.find((x) => x.checked === true);
@@ -598,7 +615,7 @@ const generaDomanda = () => {
   const x = arrayDomande.length;
 
   //!Creo la lista di risposte
-
+  const answerGroup = document.createElement("div");
   for (let i = 0; i < x; i++) {
     const posDomanda = Math.floor(Math.random() * arrayDomande.length);
     const radio = document.createElement("input");
@@ -615,12 +632,16 @@ const generaDomanda = () => {
     label.innerText = arrayDomande[posDomanda];
     arrayDomande.splice(posDomanda, 1);
     divAnswer.appendChild(label);
-    quiz.appendChild(divAnswer);
+    answerGroup.appendChild(divAnswer);
   }
+  answerGroup.classList.add("answerGroup");
+  quiz.appendChild(answerGroup);
+
   const nextButton = document.createElement("button");
   nextButton.innerText = "Next";
   quiz.appendChild(nextButton);
   nextButton.classList.add("nextButton");
+  nextButton.addEventListener("mousedown", controllaLive);
   nextButton.addEventListener("click", controlla);
   nextButton.addEventListener("click", cancellaTempo);
   nextButton.addEventListener("click", generaDomanda);
@@ -633,6 +654,7 @@ const generaDomanda = () => {
 
   questionNumber++;
 };
+//?-----------------------------------------Welcom Page---------------------------
 const start = () => {
   console.log(check.checked);
   if (check.checked === true) buttonWelcom.disabled = false;
@@ -643,6 +665,7 @@ const check = document.getElementById("homecheck");
 check.addEventListener("change", start);
 buttonWelcom.onclick = generaDomanda;
 console.log(check);
+//?-------------------------------------------------------------------------------
 //TODO--------------------FEEDBACK--------------------
 
 const stars = document.getElementsByClassName("rateStar");

@@ -324,3 +324,12 @@ svg {
 .starOn {
   filter: brightness(100%);
 }
+
+/* Classi Live Answer */
+.Green {
+  color: green;
+}
+
+.Red {
+  color: red;
+}
