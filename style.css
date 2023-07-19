@@ -308,3 +308,13 @@ svg {
 #scelte button:active {
   box-shadow: 0px 0px 8px 1px #d20093;
 }
+.rateStar {
+  display: inline-block;
+  justify-content: space-between;
+  filter: brightness(00%);
+  margin-inline: 15px;
+  height: 40px;
+}
+.starOn {
+  filter: brightness(100%);
+}
