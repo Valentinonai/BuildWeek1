@@ -536,19 +536,38 @@ const datiIniziali = () => {
 const startButton = document.getElementById("startScelte");
 startButton.onclick = datiIniziali;
 //TODO------------------------------------------------------------------------------
+//?----------------------------Controllo risposta live------------------------------
+const controllaLive = () => {
+  let answer = document.getElementsByClassName("radioAnswer");
+  let label = document.getElementsByClassName("label");
+  answer = Array.from(answer);
+  label = Array.from(label);
 
+  const selezione = answer.find((x) => x.checked === true);
+  const selezione2 = label.find((x) => x.innerText === selezione.value);
+
+  if (selezione !== "undefined") {
+    if (selezione.value === questions[questionNumber - 1].correct_answer) {
+      selezione2.classList.add("Green");
+    } else {
+      selezione2.classList.add("Red");
+    }
+  }
+};
+
+//?---------------------------------------------------------------------------------
 //! Controllo la risposta
 const controlla = () => {
+  // nextButton.classList.remove("buttonGreen");
+  // nextButton.classList.remove("buttonGreen");
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
   const selezione = answer.find((x) => x.checked === true);
-  console.log(selezione.value);
   if (selezione !== "undefined") {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       punteggio++;
     }
   }
-  console.log(punteggio);
 };
 
 const generaDomanda = () => {
@@ -556,7 +575,6 @@ const generaDomanda = () => {
     //TODO Inserire codice che richiama la finestra risultato
     alert(`Risposte esatte ${punteggio}`);
   }
-  console.log(numDomande, questionNumber);
   cerchio.style.strokeDashoffset = 0;
 
   //!Timer
@@ -598,7 +616,7 @@ const generaDomanda = () => {
   const x = arrayDomande.length;
 
   //!Creo la lista di risposte
-
+  const answerGroup = document.createElement("div");
   for (let i = 0; i < x; i++) {
     const posDomanda = Math.floor(Math.random() * arrayDomande.length);
     const radio = document.createElement("input");
@@ -615,12 +633,16 @@ const generaDomanda = () => {
     label.innerText = arrayDomande[posDomanda];
     arrayDomande.splice(posDomanda, 1);
     divAnswer.appendChild(label);
-    quiz.appendChild(divAnswer);
+    answerGroup.appendChild(divAnswer);
   }
+  answerGroup.classList.add("answerGroup");
+  quiz.appendChild(answerGroup);
+
   const nextButton = document.createElement("button");
   nextButton.innerText = "Next";
   quiz.appendChild(nextButton);
   nextButton.classList.add("nextButton");
+  nextButton.addEventListener("mousedown", controllaLive);
   nextButton.addEventListener("click", controlla);
   nextButton.addEventListener("click", cancellaTempo);
   nextButton.addEventListener("click", generaDomanda);
@@ -633,8 +655,8 @@ const generaDomanda = () => {
 
   questionNumber++;
 };
+//?-----------------------------------------Welcom Page---------------------------
 const start = () => {
-  console.log(check.checked);
   if (check.checked === true) buttonWelcom.disabled = false;
   else buttonWelcom.disabled = true;
 };
@@ -642,14 +664,13 @@ const buttonWelcom = document.getElementById("buttonWelcom");
 const check = document.getElementById("homecheck");
 check.addEventListener("change", start);
 buttonWelcom.onclick = generaDomanda;
-console.log(check);
+//?-------------------------------------------------------------------------------
 //TODO--------------------FEEDBACK--------------------
 
 const stars = document.getElementsByClassName("rateStar");
 const stella = Array.from(stars);
 function star(event) {
   const Stella = stella.map((x) => x.classList.remove("starOn"));
-  console.log(stars);
   for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
     stars[i].classList.add("starOn");
   }
