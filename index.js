@@ -644,7 +644,6 @@ check.addEventListener("change", start);
 buttonWelcom.onclick = generaDomanda;
 console.log(check);
 //TODO--------------------FEEDBACK--------------------
-const Star = document.getElementsByClassName("rateStar");
 
 const stars = document.getElementsByClassName("rateStar");
 const stella = Array.from(stars);
