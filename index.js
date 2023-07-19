@@ -675,3 +675,17 @@ function star(event) {
   }
 }
 //TODO----------------------------------------------
+//TODO------------------Feedback dinamico----------
+const onStar = (event) => {
+  stella.map((x) => x.classList.remove("starOn"));
+  for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
+    stars[i].classList.add("starAccendi");
+  }
+};
+const offStar = (event) => {
+  for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
+    stars[i].classList.remove("starAccendi");
+  }
+};
+stella.map((x) => x.addEventListener("mouseover", onStar));
+stella.map((x) => x.addEventListener("mouseout", offStar));

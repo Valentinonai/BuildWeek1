@@ -328,6 +328,9 @@ svg {
 .starOn {
   filter: brightness(100%);
 }
+.starAccendi {
+  filter: brightness(100%);
+}
 
 /* Classi Live Answer */
 .Green {
