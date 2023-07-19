@@ -654,7 +654,7 @@ const generaDomanda = () => {
 
   questionNumber++;
 };
-//?-----------------------------------------Welcom Page---------------------------
+//?-----------------------------------------Welcome Page---------------------------
 const start = () => {
   if (check.checked === true) buttonWelcom.disabled = false;
   else buttonWelcom.disabled = true;
