@@ -366,9 +366,6 @@ svg {
 #correctAnswers {
   width: 20%;
 }
-#grafico {
-  width: 50%;
-}
 #correctAnswers p:first-of-type {
   font-family: "Inter", sans-serif;
   font-size: 40px;
@@ -393,7 +390,7 @@ svg {
   background-color: transparent;
   border: 2px solid white;
   color: white;
-  box-shadow: 0px 0px 4px 3px rgba(9, 2, 191, 0.548);
+  box-shadow: 0px 0px 8px 5px white;
 }
 #buttonRate button:active {
   box-shadow: none;
@@ -420,4 +417,43 @@ svg {
   font-size: 18px;
   text-align: right;
   margin: 0;
+}
+/* Grafico Results */
+#cerchio3 {
+  fill: none;
+  stroke: #d20093;
+  stroke-width: 18px;
+  stroke-dasharray: 472px;
+  stroke-dashoffset: 0;
+}
+#cerchio4 {
+  fill: none;
+  stroke: #0ff;
+  stroke-width: 18px;
+  stroke-dasharray: 472px;
+  stroke-dashoffset: 0;
+}
+#grafico1 {
+  position: static;
+  left: 40px;
+  top: 100px;
+  margin-top: 50px;
+}
+#grafico {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 500px;
+  width: 55%;
+}
+
+#mainResults {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.voto {
+  position: absolute;
 }

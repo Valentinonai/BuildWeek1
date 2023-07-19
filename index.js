@@ -692,7 +692,7 @@ stella.map((x) => x.addEventListener("mouseout", offStar));
 
 //TODO------------------------------------------------
 //TODO---------------------RESULTS-----------------------------
-(punteggio = 5), (numDomande = 20);
+(punteggio = 1), (numDomande = 20);
 const percentualeCorretta = (punteggio * 100) / numDomande;
 const percentualeSbagliata = 100 - percentualeCorretta;
 
@@ -721,5 +721,28 @@ const finestraPunteggio = () => {
   paragrafoPunteggioSbagliato.classList.add("paragrafoPunteggioSbagliato");
   paragrafoPunteggioSbagliato.innerText = `${numDomande - punteggio} / ${numDomande} questions`;
   wrongAnswers.appendChild(paragrafoPunteggioSbagliato);
+  const grafico = document.getElementById("grafico");
+  const voto = document.createElement("p");
+  voto.classList.add("voto");
+  const circle2 = document.getElementById("cerchio4");
+
+  if (percentualeCorretta >= 60) {
+    console.log("------------");
+    voto.innerHTML = `<span style="font-size: 20px">Congratulations<br>
+    <span style="color: #0ff; font-weight: bold;">You passed the exam.</span><br>
+    <span style="font-weight: 200 "><span style="font-size:13px">
+      We'll send you the certificate in few minutes.<br>
+  Check your email <br>(including promotions / spam folder)
+   </span> </span></span>`;
+    circle2.style.strokeDashoffset = 474 - (474 * percentualeCorretta) / 100;
+  } else {
+    voto.innerHTML = `<span style="font-size: 20px">You Failed<br>
+  <span style="color: #0ff; font-weight: bold;">You didn't pass the exam.</span><br>
+  <span style="font-weight: 200 "><span style="font-size:15px">
+We are sorry, try again time
+ </span> </span></span>`;
+    circle2.style.strokeDashoffset = 474 - (474 * percentualeCorretta) / 100;
+  }
+  grafico.appendChild(voto);
 };
 finestraPunteggio();
