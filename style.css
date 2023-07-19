@@ -236,6 +236,13 @@ circle {
   stroke-dasharray: 472px;
   stroke-dashoffset: 0;
 }
+#cerchio1 {
+  fill: none;
+  stroke: #d20093;
+  stroke-width: 20px;
+  stroke-dasharray: 472px;
+  stroke-dashoffset: 0;
+}
 svg {
   rotate: -90deg;
   position: absolute;
