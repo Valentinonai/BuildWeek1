@@ -539,33 +539,34 @@ startButton.onclick = datiIniziali;
 //?----------------------------Controllo risposta live------------------------------
 const controllaLive = () => {
   let answer = document.getElementsByClassName("radioAnswer");
+  let label = document.getElementsByClassName("label");
   answer = Array.from(answer);
+  label = Array.from(label);
   const selezione = answer.find((x) => x.checked === true);
+  const selezione2 = label.find((x) => x.innerText === selezione.value);
+
   if (selezione !== "undefined") {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
-      nextButton.classList.add("Green");
+      selezione2.classList.add("Green");
+      answer.map((x) => (x.disabled = true));
     } else {
-      nextButton.classList.add("Red");
+      selezione2.classList.add("Red");
+      answer.map((x) => (x.disabled = true));
     }
   }
-  console.log(punteggio);
 };
 
 //?---------------------------------------------------------------------------------
 //! Controllo la risposta
 const controlla = () => {
-  // nextButton.classList.remove("buttonGreen");
-  // nextButton.classList.remove("buttonGreen");
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
   const selezione = answer.find((x) => x.checked === true);
-  console.log(selezione.value);
   if (selezione !== "undefined") {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       punteggio++;
     }
   }
-  console.log(punteggio);
 };
 
 const generaDomanda = () => {
@@ -573,7 +574,6 @@ const generaDomanda = () => {
     //TODO Inserire codice che richiama la finestra risultato
     alert(`Risposte esatte ${punteggio}`);
   }
-  console.log(numDomande, questionNumber);
   cerchio.style.strokeDashoffset = 0;
 
   //!Timer
@@ -654,9 +654,8 @@ const generaDomanda = () => {
 
   questionNumber++;
 };
-//?-----------------------------------------Welcom Page---------------------------
+//?-----------------------------------------Welcome Page---------------------------
 const start = () => {
-  console.log(check.checked);
   if (check.checked === true) buttonWelcom.disabled = false;
   else buttonWelcom.disabled = true;
 };
@@ -664,15 +663,13 @@ const buttonWelcom = document.getElementById("buttonWelcom");
 const check = document.getElementById("homecheck");
 check.addEventListener("change", start);
 buttonWelcom.onclick = generaDomanda;
-console.log(check);
 //?-------------------------------------------------------------------------------
 //TODO--------------------FEEDBACK--------------------
 
 const stars = document.getElementsByClassName("rateStar");
 const stella = Array.from(stars);
 function star(event) {
-  const Stella = stella.map((x) => x.classList.remove("starOn"));
-  console.log(stars);
+  stella.map((x) => x.classList.remove("starOn"));
   for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
     stars[i].classList.add("starOn");
   }
