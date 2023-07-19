@@ -66,30 +66,28 @@
       <div id="quiz"></div>
     </div>
 
-    <div id="results" class="background">
-      <div class="logo">
-        <img src="epicode_logo.png" alt="error" id="logo" />
-      </div>
-    </div>
-
     <div id="review" class="background">
       <div class="logo">
         <img src="epicode_logo.png" alt="error" class="logo" />
       </div>
       <h1>Tell us how it's going</h1>
       <h2>From 0 to 10, how likely are you to racommed EPICODE <br />to a friend or a colleague?</h2>
-      <div class="rateStar"></div>
-      <div class="rateStar"></div>
-      <div class="rateStar"></div>
-      <div class="rateStar"></div>
-      <div class="rateStar"></div>
-      <div class="rateStar"></div>
-      <div class="rateStar"></div>
-      <div class="rateStar"></div>
-      <div class="rateStar"></div>
-      <div class="rateStar"></div>
+      <div class="divStar">
+        <div class="rateStar" title="1" onclick="star(event)"><img src="star.svg" /></div>
+        <div class="rateStar" title="2" onclick="star(event)"><img src="star.svg" /></div>
+        <div class="rateStar" title="3" onclick="star(event)"><img src="star.svg" /></div>
+        <div class="rateStar" title="4" onclick="star(event)"><img src="star.svg" /></div>
+        <div class="rateStar" title="5" onclick="star(event)"><img src="star.svg" /></div>
+        <div class="rateStar" title="6" onclick="star(event)"><img src="star.svg" /></div>
+        <div class="rateStar" title="7" onclick="star(event)"><img src="star.svg" /></div>
+        <div class="rateStar" title="8" onclick="star(event)"><img src="star.svg" /></div>
+        <div class="rateStar" title="9" onclick="star(event)"><img src="star.svg" /></div>
+        <div class="rateStar" title="10" onclick="star(event)"><img src="star.svg" /></div>
+      </div>
+
       <h3>Leave us an open feedback about you experience so far</h3>
       <input type="text" name="" id="inputReview" required placeholder="Write your comment here" />
+
       <button class="button" id="button2">MORE INFO</button>
     </div>
     <script src="./index.js"></script>
