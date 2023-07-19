@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
 
 #benchmark,
-#review,
+#scelte,
 #results,
 #welcome {
   display: none;
@@ -323,6 +323,9 @@ svg {
   height: 40px;
 }
 .starOn {
+  filter: brightness(100%);
+}
+.starAccendi {
   filter: brightness(100%);
 }
 
