@@ -226,12 +226,21 @@ button:active {
 
 #txt {
   font-weight: 600px;
-  font-size: 25px;
+  font-size: 50px;
   color: #ffffff;
+  font-family: "Inter", sans-serif;
 }
+
 circle {
   fill: none;
   stroke: #00ffff;
+  stroke-width: 20px;
+  stroke-dasharray: 472px;
+  stroke-dashoffset: 0;
+}
+#cerchio1 {
+  fill: none;
+  stroke: rgba(128, 128, 128, 0.38);
   stroke-width: 20px;
   stroke-dasharray: 472px;
   stroke-dashoffset: 0;
