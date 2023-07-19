@@ -536,6 +536,96 @@ const datiIniziali = () => {
 const startButton = document.getElementById("startScelte");
 startButton.onclick = datiIniziali;
 //TODO------------------------------------------------------------------------------
+
+//?-------------------------------------------------------------------------------
+//TODO--------------------FEEDBACK--------------------
+
+const stars = document.getElementsByClassName("rateStar");
+const stella = Array.from(stars);
+function star(event) {
+  stella.map((x) => x.classList.remove("starOn"));
+  for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
+    stars[i].classList.add("starOn");
+  }
+}
+//TODO----------------------------------------------
+//TODO------------------Feedback dinamico----------
+const onStar = (event) => {
+  stella.map((x) => x.classList.remove("starOn"));
+  for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
+    stars[i].classList.add("starAccendi");
+  }
+};
+const offStar = (event) => {
+  for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
+    stars[i].classList.remove("starAccendi");
+  }
+};
+stella.map((x) => x.addEventListener("mouseover", onStar));
+stella.map((x) => x.addEventListener("mouseout", offStar));
+
+const valutazione = () => {
+  const voto = document.getElementById("results");
+  const feedback = document.getElementById("review");
+  voto.style.display = "none";
+  feedback.style.display = "block";
+};
+//TODO------------------------------------------------
+//TODO---------------------RESULTS-----------------------------
+
+const finestraPunteggio = () => {
+  const percentualeCorretta = (punteggio * 100) / numDomande;
+  const percentualeSbagliata = 100 - percentualeCorretta;
+  const benchmark = document.getElementById("benchmark");
+  benchmark.style.display = "none";
+  const results = document.getElementById("results");
+  results.style.display = "block";
+  //?Risposte corrette
+  const correctAnswers = document.getElementById("correctAnswers");
+  const Corrette = document.createElement("p");
+  Corrette.innerText = `${percentualeCorretta} %`;
+  Corrette.classList.add("percentualePunteggio");
+  correctAnswers.appendChild(Corrette);
+  const paragrafoPunteggio = document.createElement("p");
+  paragrafoPunteggio.classList.add("paragrafoPunteggio");
+  paragrafoPunteggio.innerText = `${punteggio} / ${numDomande} questions`;
+  correctAnswers.appendChild(paragrafoPunteggio);
+  //?Risposte sbagliate
+  const wrongAnswers = document.getElementById("wrongAnswers");
+  const Sbagliate = document.createElement("p");
+  Sbagliate.innerText = `${percentualeSbagliata} %`;
+  Sbagliate.classList.add("percentualePunteggioSbagliato");
+  wrongAnswers.appendChild(Sbagliate);
+  const paragrafoPunteggioSbagliato = document.createElement("p");
+  paragrafoPunteggioSbagliato.classList.add("paragrafoPunteggioSbagliato");
+  paragrafoPunteggioSbagliato.innerText = `${numDomande - punteggio} / ${numDomande} questions`;
+  wrongAnswers.appendChild(paragrafoPunteggioSbagliato);
+  const grafico = document.getElementById("grafico");
+  const voto = document.createElement("p");
+  voto.classList.add("voto");
+  const circle2 = document.getElementById("cerchio4");
+  console.log(percentualeCorretta);
+  if (percentualeCorretta >= 60) {
+    voto.innerHTML = `<span style="font-size: 20px">Congratulations<br>
+    <span style="color: #0ff; font-weight: bold;">You passed the exam.</span><br>
+    <span style="font-weight: 200 "><span style="font-size:13px">
+      We'll send you the certificate in few minutes.<br>
+  Check your email <br>(including promotions / spam folder)
+   </span> </span></span>`;
+    circle2.style.strokeDashoffset = 474 - (474 * percentualeCorretta) / 100;
+  } else {
+    voto.innerHTML = `<span style="font-size: 20px">You Failed<br>
+  <span style="color: #0ff; font-weight: bold;">You didn't pass the exam.</span><br>
+  <span style="font-weight: 200 "><span style="font-size:15px">
+We are sorry, try again
+ </span> </span></span>`;
+    circle2.style.strokeDashoffset = 474 - (474 * percentualeCorretta) / 100;
+  }
+  grafico.appendChild(voto);
+  const button = document.getElementById("buttonRate");
+  button.onclick = valutazione;
+};
+
 //?----------------------------Controllo risposta live------------------------------
 const controllaLive = () => {
   let answer = document.getElementsByClassName("radioAnswer");
@@ -571,8 +661,9 @@ const controlla = () => {
 
 const generaDomanda = () => {
   if (questionNumber === parseInt(numDomande)) {
+    finestraPunteggio();
+    benchmark.style.display = "none";
     //TODO Inserire codice che richiama la finestra risultato
-    alert(`Risposte esatte ${punteggio}`);
   }
   cerchio.style.strokeDashoffset = 0;
 
@@ -663,86 +754,3 @@ const buttonWelcom = document.getElementById("buttonWelcom");
 const check = document.getElementById("homecheck");
 check.addEventListener("change", start);
 buttonWelcom.onclick = generaDomanda;
-//?-------------------------------------------------------------------------------
-//TODO--------------------FEEDBACK--------------------
-
-const stars = document.getElementsByClassName("rateStar");
-const stella = Array.from(stars);
-function star(event) {
-  stella.map((x) => x.classList.remove("starOn"));
-  for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
-    stars[i].classList.add("starOn");
-  }
-}
-//TODO----------------------------------------------
-//TODO------------------Feedback dinamico----------
-const onStar = (event) => {
-  stella.map((x) => x.classList.remove("starOn"));
-  for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
-    stars[i].classList.add("starAccendi");
-  }
-};
-const offStar = (event) => {
-  for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
-    stars[i].classList.remove("starAccendi");
-  }
-};
-stella.map((x) => x.addEventListener("mouseover", onStar));
-stella.map((x) => x.addEventListener("mouseout", offStar));
-
-//TODO------------------------------------------------
-//TODO---------------------RESULTS-----------------------------
-(punteggio = 1), (numDomande = 20);
-const percentualeCorretta = (punteggio * 100) / numDomande;
-const percentualeSbagliata = 100 - percentualeCorretta;
-
-const finestraPunteggio = () => {
-  const benchmark = document.getElementById("benchmark");
-  benchmark.style.display = "none";
-  const results = document.getElementById("results");
-  results.style.display = "block";
-  //?Risposte corrette
-  const correctAnswers = document.getElementById("correctAnswers");
-  const Corrette = document.createElement("p");
-  Corrette.innerText = `${percentualeCorretta} %`;
-  Corrette.classList.add("percentualePunteggio");
-  correctAnswers.appendChild(Corrette);
-  const paragrafoPunteggio = document.createElement("p");
-  paragrafoPunteggio.classList.add("paragrafoPunteggio");
-  paragrafoPunteggio.innerText = `${punteggio} / ${numDomande} questions`;
-  correctAnswers.appendChild(paragrafoPunteggio);
-  //?Risposte sbagliate
-  const wrongAnswers = document.getElementById("wrongAnswers");
-  const Sbagliate = document.createElement("p");
-  Sbagliate.innerText = `${percentualeSbagliata} %`;
-  Sbagliate.classList.add("percentualePunteggioSbagliato");
-  wrongAnswers.appendChild(Sbagliate);
-  const paragrafoPunteggioSbagliato = document.createElement("p");
-  paragrafoPunteggioSbagliato.classList.add("paragrafoPunteggioSbagliato");
-  paragrafoPunteggioSbagliato.innerText = `${numDomande - punteggio} / ${numDomande} questions`;
-  wrongAnswers.appendChild(paragrafoPunteggioSbagliato);
-  const grafico = document.getElementById("grafico");
-  const voto = document.createElement("p");
-  voto.classList.add("voto");
-  const circle2 = document.getElementById("cerchio4");
-
-  if (percentualeCorretta >= 60) {
-    console.log("------------");
-    voto.innerHTML = `<span style="font-size: 20px">Congratulations<br>
-    <span style="color: #0ff; font-weight: bold;">You passed the exam.</span><br>
-    <span style="font-weight: 200 "><span style="font-size:13px">
-      We'll send you the certificate in few minutes.<br>
-  Check your email <br>(including promotions / spam folder)
-   </span> </span></span>`;
-    circle2.style.strokeDashoffset = 474 - (474 * percentualeCorretta) / 100;
-  } else {
-    voto.innerHTML = `<span style="font-size: 20px">You Failed<br>
-  <span style="color: #0ff; font-weight: bold;">You didn't pass the exam.</span><br>
-  <span style="font-weight: 200 "><span style="font-size:15px">
-We are sorry, try again time
- </span> </span></span>`;
-    circle2.style.strokeDashoffset = 474 - (474 * percentualeCorretta) / 100;
-  }
-  grafico.appendChild(voto);
-};
-finestraPunteggio();
