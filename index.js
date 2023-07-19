@@ -574,7 +574,9 @@ const valutazione = () => {
 //TODO---------------------RESULTS-----------------------------
 
 const finestraPunteggio = () => {
-  const percentualeCorretta = (punteggio * 100) / numDomande;
+  const percentuale = (punteggio * 100) / numDomande;
+  let percentualeCorretta = percentuale.toFixed(2);
+  Number(percentualeCorretta);
   const percentualeSbagliata = 100 - percentualeCorretta;
   const benchmark = document.getElementById("benchmark");
   benchmark.style.display = "none";
