@@ -669,7 +669,7 @@ buttonWelcom.onclick = generaDomanda;
 const stars = document.getElementsByClassName("rateStar");
 const stella = Array.from(stars);
 function star(event) {
-  const Stella = stella.map((x) => x.classList.remove("starOn"));
+  stella.map((x) => x.classList.remove("starOn"));
   for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
     stars[i].classList.add("starOn");
   }
