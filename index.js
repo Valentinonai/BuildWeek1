@@ -559,8 +559,6 @@ const controllaLive = () => {
 //?---------------------------------------------------------------------------------
 //! Controllo la risposta
 const controlla = () => {
-  // nextButton.classList.remove("buttonGreen");
-  // nextButton.classList.remove("buttonGreen");
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
   const selezione = answer.find((x) => x.checked === true);
