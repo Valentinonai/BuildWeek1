@@ -8,7 +8,7 @@
   margin: 30px;
   margin-inline: 30px;
 }
-#review {
+#welcome {
   margin-inline: 30px;
 }
 body {
@@ -106,6 +106,9 @@ button:active {
 .logo {
   width: 200px;
 }
+#quiz {
+  height: 800px;
+}
 .domanda {
   font-size: 40px;
   margin-top: 30px;
@@ -114,6 +117,7 @@ button:active {
   width: 800px;
   text-align: center;
   font-size: 25px;
+  height: 200px;
 }
 .radioAnswer {
   display: inline-block;
@@ -137,7 +141,8 @@ button:active {
   padding-bottom: 30px;
 
   display: inline-block;
-  width: 400px;
+  width: 800px;
+  height: 40px;
   margin-left: 40%;
 
   text-align: left;
