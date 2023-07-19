@@ -689,3 +689,37 @@ const offStar = (event) => {
 };
 stella.map((x) => x.addEventListener("mouseover", onStar));
 stella.map((x) => x.addEventListener("mouseout", offStar));
+
+//TODO------------------------------------------------
+//TODO---------------------RESULTS-----------------------------
+(punteggio = 5), (numDomande = 20);
+const percentualeCorretta = (punteggio * 100) / numDomande;
+const percentualeSbagliata = 100 - percentualeCorretta;
+
+const finestraPunteggio = () => {
+  const benchmark = document.getElementById("benchmark");
+  benchmark.style.display = "none";
+  const results = document.getElementById("results");
+  results.style.display = "block";
+  //?Risposte corrette
+  const correctAnswers = document.getElementById("correctAnswers");
+  const Corrette = document.createElement("p");
+  Corrette.innerText = `${percentualeCorretta} %`;
+  Corrette.classList.add("percentualePunteggio");
+  correctAnswers.appendChild(Corrette);
+  const paragrafoPunteggio = document.createElement("p");
+  paragrafoPunteggio.classList.add("paragrafoPunteggio");
+  paragrafoPunteggio.innerText = `${punteggio} / ${numDomande} questions`;
+  correctAnswers.appendChild(paragrafoPunteggio);
+  //?Risposte sbagliate
+  const wrongAnswers = document.getElementById("wrongAnswers");
+  const Sbagliate = document.createElement("p");
+  Sbagliate.innerText = `${percentualeSbagliata} %`;
+  Sbagliate.classList.add("percentualePunteggioSbagliato");
+  wrongAnswers.appendChild(Sbagliate);
+  const paragrafoPunteggioSbagliato = document.createElement("p");
+  paragrafoPunteggioSbagliato.classList.add("paragrafoPunteggioSbagliato");
+  paragrafoPunteggioSbagliato.innerText = `${numDomande - punteggio} / ${numDomande} questions`;
+  wrongAnswers.appendChild(paragrafoPunteggioSbagliato);
+};
+finestraPunteggio();
