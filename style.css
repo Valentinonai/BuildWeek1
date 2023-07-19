@@ -2,7 +2,8 @@
 
 #benchmark,
 #review,
-#results {
+#results,
+#welcome {
   display: none;
   margin: 30px;
   margin-inline: 30px;
@@ -18,6 +19,7 @@ body {
   padding: 10px 90px 5px;
   margin: 0 auto;
   font-family: "Inter", sans-serif;
+  height: 100vh;
 }
 
 #welcome p {
@@ -250,4 +252,59 @@ svg {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+/* Menu di scelta */
+
+#scelte {
+  padding: 15px;
+  margin: 100px auto;
+  width: 400px;
+  height: 350px;
+  border-radius: 10px;
+  background-color: rgba(20, 56, 236, 0);
+  color: white;
+  box-shadow: 0 0 40px 10px grey;
+  text-align: center;
+}
+#scelte h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 40px;
+  color: #d20093;
+}
+#scelte label:first-child {
+  display: block;
+  margin: 0 auto;
+}
+#numDomande {
+  width: 300px;
+  display: block;
+  margin: 20px auto;
+  background-color: transparent;
+  border: none;
+  padding-bottom: 10px;
+  margin-top: 30px;
+  border-bottom: 2px solid #d20093;
+  color: white;
+}
+#diff {
+  margin: 0 auto;
+  padding: 0;
+}
+#scelte button {
+  display: block;
+  margin: 30px auto;
+  width: 200px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  background-color: #d20093;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0px 0px 15px 8px #d20093cc;
+  border: none;
+}
+#scelte button:active {
+  box-shadow: 0px 0px 8px 1px #d20093;
 }

@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="scelte">
+      <h2>Scelte Test</h2>
+      <label for="numeroDomande">A quante domande vuoi rispondere?</label>
+      <input type="number" id="numDomande" placeholder="Numero domande" name="numeroDomande" />
+      <div id="diff">
+        <input type="radio" class="radioDifficolta" value="easy" name="difficolta" />
+        <label for="easy">easy</label>
+        <input type="radio" class="radioDifficolta" value="medium" name="difficolta" />
+        <label for="medium">medium</label>
+        <input type="radio" class="radioDifficolta" value="hard" name="difficolta" />
+        <label for="hard">hard</label>
+      </div>
+      <button id="startScelte">Start</button>
+    </div>
     <div id="welcome" class="background">
       <header>
         <img src="epicode_logo.png" alt="error" class="logo" />
