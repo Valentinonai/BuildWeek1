@@ -151,4 +151,28 @@ const generaDomanda = () => {
 
 const buttonWelcom = document.getElementById("buttonWelcom");
 buttonWelcom.onclick = generaDomanda;
+<<<<<<< Updated upstream
 77dhvcuywb
+=======
+console.log(check);
+
+const Star = document.getElementsByClassName("rateStar");
+
+console.log(Star);
+// function star() {
+//   for (let i = 0; i < Star.length; i++);
+//   Star[i].currentTarget.style.filter = "brightness (100%)";
+// }
+const stars = document.getElementsByClassName("rateStar");
+const stella = Array.from(stars);
+function star(event) {
+  // const star = stars[i].event.currentTarget;
+  console.log(event.currentTarget.title);
+
+  const Stella = stella.map((x) => x.classList.remove("starOn"));
+  console.log(stars);
+  for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
+    stars[i].classList.add("starOn");
+  }
+}
+>>>>>>> Stashed changes

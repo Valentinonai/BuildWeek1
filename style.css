@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
+
+#benchmark,
+#welcome,
+#results {
+  display: none;
+  margin: 30px;
+  margin-inline: 30px;
+}
+#review {
+  margin-inline: 30px;
+}
+body {
+  background-image: url(bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  padding: 10px 90px 5px;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+}
+
+#welcome p {
+  margin-top: 0;
+}
+
+.button {
+  background-color: #0ff;
+  box-shadow: 0px 0px 40px 10px rgba(0, 255, 255, 0.548);
+  border: none;
+  width: 250px;
+  height: 70px;
+  font-size: 25px;
+  font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
+}
+
+button:active {
+  box-shadow: 0px 0px 8px 5px rgba(0, 255, 255, 0.548);
+}
+#paragrafoHome {
+  display: inline-block;
+  width: 30%;
+  font-size: medium;
+}
+
+#homecheck {
+  margin-top: 60px;
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  outline: 1px solid white;
+  cursor: pointer;
+}
+
+#welcome span {
+  font-weight: bold;
+}
+#welcome p {
+  font-size: large;
+}
+#welcome h1 {
+  width: 650px;
+  margin-block: 60px;
+  font-weight: 400;
+  font-size: 100px;
+  font-family: "Outfit", sans-serif;
+  line-height: 80px;
+}
+
+#welcome ul {
+  line-height: 35px;
+  font-size: large;
+}
+
+#welcome h2 {
+  color: #d20094;
+  margin-bottom: 15px;
+  font-size: xx-large;
+}
+
+#welcome,
+#benchmarck,
+#results,
+#review {
+  margin-block: 30px;
+  margin-inline: 30px;
+  font-size: 18px;
+  margin-bottom: 60px;
+}
+
+.radioAnswer label {
+  color: white;
+}
+.spanColor {
+  color: #d20094;
+}
+
+#paragrafoHome {
+  display: inline-block;
+  width: 70%;
+}
+.logo {
+  width: 200px;
+}
+.domanda {
+  font-size: 40px;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  margin-inline: auto;
+  width: 800px;
+  text-align: center;
+  font-size: 25px;
+}
+.radioAnswer {
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+  color: rgba(65, 65, 65, 0.378);
+  border: 2px solid color rgba(69, 68, 68, 0.122);
+}
+.label {
+  font-family: "Inter", sans-serif;
+  font-size: x-large;
+  font-weight: 700;
+}
+.divQuestionNumber {
+  text-align: center;
+  font-size: x-large;
+  margin-top: 50px;
+  text-align: bottom;
+}
+.divAnswer {
+  padding-bottom: 30px;
+
+  display: inline-block;
+  width: 400px;
+  margin-left: 40%;
+
+  text-align: left;
+}
+.nextButton {
+  width: 150px;
+  height: 50px;
+  background-color: #d20093;
+  border-radius: 10px;
+  color: white;
+  margin-top: 40px;
+  box-shadow: 0px 0px 15px 8px #d20093cc;
+  border: none;
+  display: block;
+  cursor: pointer;
+}
+.nextButton:active {
+  box-shadow: 0px 0px 8px 4px #d20093;
+}
+#review h1 {
+  text-align: center;
+  font-size: 80px;
+  margin-top: 100px;
+  font-family: "Outfit", sans-serif;
+  margin-bottom: 20px;
+}
+#review h2 {
+  text-align: center;
+  width: 1000px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-size: x-large;
+}
+
+#review h3 {
+  text-align: center;
+  width: 1000px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  margin-top: 80px;
+  display: block;
+  font-size: x-large;
+}
+#inputReview {
+  font-family: "Inter", sans-serif;
+  font-size: large;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #d20093;
+  background-color: transparent;
+  width: 1000px;
+  display: block;
+  margin-block: 40px;
+  margin-bottom: 100px;
+  padding-bottom: 10px;
+}
+#button2 {
+  margin-inline: 40%;
+  text-align: center;
+}
+/* Timer */
+#benchmark header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#timer {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+#out {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  padding: 20px;
+}
+#in {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#txt {
+  font-weight: 600px;
+  font-size: 50px;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+circle {
+  fill: none;
+  stroke: #00ffff;
+  stroke-width: 20px;
+  stroke-dasharray: 472px;
+  stroke-dashoffset: 0;
+}
+#cerchio1 {
+  fill: none;
+  stroke: rgba(128, 128, 128, 0.38);
+  stroke-width: 20px;
+  stroke-dasharray: 472px;
+  stroke-dashoffset: 0;
+}
+svg {
+  rotate: -90deg;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rateStar {
+  display: inline-block;
+  justify-content: space-between;
+  filter: brightness(00%);
+  margin-inline: 15px;
+  height: 40px;
+}
+.starOn {
+  filter: brightness(100%);
+}
