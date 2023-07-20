@@ -694,6 +694,8 @@ const generaDomanda = () => {
         text.innerText = t;
         circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
         if (t === 0) {
+          risposteUtente.push("--------"); //!Variabili per riepilogo risposte
+          risposteCorrette.push("--------");
           clearInterval(myTimer);
           generaDomanda();
         }
