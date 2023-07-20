@@ -575,9 +575,11 @@ const valutazione = () => {
 
 const finestraPunteggio = () => {
   const percentuale = (punteggio * 100) / numDomande;
-  let percentualeCorretta = percentuale.toFixed(2);
+  let percentualeCorretta = percentuale.toFixed(1); //!Prendo un decimale
   Number(percentualeCorretta);
-  const percentualeSbagliata = 100 - percentualeCorretta;
+  const percentualeS = 100 - percentualeCorretta;
+  let percentualeSbagliata = percentualeS.toFixed(1);
+  Number(percentualeSbagliata);
   const benchmark = document.getElementById("benchmark");
   benchmark.style.display = "none";
   const results = document.getElementById("results");
@@ -667,85 +669,87 @@ const generaDomanda = () => {
     benchmark.style.display = "none";
     //TODO Inserire codice che richiama la finestra risultato
   }
-  cerchio.style.strokeDashoffset = 0;
+  if (questionNumber < parseInt(numDomande)) {
+    cerchio.style.strokeDashoffset = 0;
 
-  //!Timer
-  const tempo = () => {
-    let t = tTot;
-    const text = document.getElementById("txt");
-    const circle = document.getElementById("cerchio");
-    text.innerText = t;
-    myTimer = setInterval(function () {
-      text.innerText = "";
-      t--;
+    //!Timer
+    const tempo = () => {
+      let t = tTot;
+      const text = document.getElementById("txt");
+      const circle = document.getElementById("cerchio");
       text.innerText = t;
-      circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
-      if (t === 0) {
-        clearInterval(myTimer);
-        generaDomanda();
-      }
-    }, 1000);
-  };
-  const cancellaTempo = () => {
-    clearInterval(myTimer);
-  };
+      myTimer = setInterval(function () {
+        text.innerText = "";
+        t--;
+        text.innerText = t;
+        circle.style.strokeDashoffset = 472 - (472 * t) / tTot;
+        if (t === 0) {
+          clearInterval(myTimer);
+          generaDomanda();
+        }
+      }, 1000);
+    };
+    const cancellaTempo = () => {
+      clearInterval(myTimer);
+    };
 
-  const welcome = document.getElementById("welcome");
-  welcome.style.display = "none";
-  const benchmark = document.getElementById("benchmark");
-  benchmark.style.display = "block";
-  const quiz = document.getElementById("quiz");
-  quiz.innerHTML = "";
+    const welcome = document.getElementById("welcome");
+    welcome.style.display = "none";
+    const benchmark = document.getElementById("benchmark");
+    benchmark.style.display = "block";
+    const quiz = document.getElementById("quiz");
+    quiz.innerHTML = "";
 
-  //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
+    //!Creo un Arrey con tutte le risposte per poi disporle in modo casuale nella pagina
 
-  const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
-  const domanda = document.createElement("h1");
-  domanda.innerText = questions[questionNumber].question;
+    const arrayDomande = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
+    const domanda = document.createElement("h1");
+    domanda.innerText = questions[questionNumber].question;
 
-  domanda.classList.add("domanda");
-  quiz.appendChild(domanda);
-  const x = arrayDomande.length;
+    domanda.classList.add("domanda");
+    quiz.appendChild(domanda);
+    const x = arrayDomande.length;
 
-  //!Creo la lista di risposte
-  const answerGroup = document.createElement("div");
-  for (let i = 0; i < x; i++) {
-    const posDomanda = Math.floor(Math.random() * arrayDomande.length);
-    const radio = document.createElement("input");
-    radio.type = "radio";
-    radio.classList.add("radioAnswer");
-    radio.name = "answer";
-    const label = document.createElement("label");
-    label.for = "radio";
-    label.classList.add("label");
-    const divAnswer = document.createElement("div");
-    divAnswer.appendChild(radio);
-    divAnswer.classList.add("divAnswer");
-    radio.value = arrayDomande[posDomanda];
-    label.innerText = arrayDomande[posDomanda];
-    arrayDomande.splice(posDomanda, 1);
-    divAnswer.appendChild(label);
-    answerGroup.appendChild(divAnswer);
+    //!Creo la lista di risposte
+    const answerGroup = document.createElement("div");
+    for (let i = 0; i < x; i++) {
+      const posDomanda = Math.floor(Math.random() * arrayDomande.length);
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.classList.add("radioAnswer");
+      radio.name = "answer";
+      const label = document.createElement("label");
+      label.for = "radio";
+      label.classList.add("label");
+      const divAnswer = document.createElement("div");
+      divAnswer.appendChild(radio);
+      divAnswer.classList.add("divAnswer");
+      radio.value = arrayDomande[posDomanda];
+      label.innerText = arrayDomande[posDomanda];
+      arrayDomande.splice(posDomanda, 1);
+      divAnswer.appendChild(label);
+      answerGroup.appendChild(divAnswer);
+    }
+    answerGroup.classList.add("answerGroup");
+    quiz.appendChild(answerGroup);
+
+    const nextButton = document.createElement("button");
+    nextButton.innerText = "Next";
+    quiz.appendChild(nextButton);
+    nextButton.classList.add("nextButton");
+    nextButton.addEventListener("mousedown", controllaLive);
+    nextButton.addEventListener("click", controlla);
+    nextButton.addEventListener("click", cancellaTempo);
+    nextButton.addEventListener("click", generaDomanda);
+
+    const divQuestionNumber = document.createElement("div");
+    divQuestionNumber.classList.add("divQuestionNumber");
+    divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
+    quiz.appendChild(divQuestionNumber);
+    tempo();
+
+    questionNumber++;
   }
-  answerGroup.classList.add("answerGroup");
-  quiz.appendChild(answerGroup);
-
-  const nextButton = document.createElement("button");
-  nextButton.innerText = "Next";
-  quiz.appendChild(nextButton);
-  nextButton.classList.add("nextButton");
-  nextButton.addEventListener("mousedown", controllaLive);
-  nextButton.addEventListener("click", controlla);
-  nextButton.addEventListener("click", cancellaTempo);
-  nextButton.addEventListener("click", generaDomanda);
-
-  const divQuestionNumber = document.createElement("div");
-  divQuestionNumber.classList.add("divQuestionNumber");
-  divQuestionNumber.innerHTML = `QUESTION  ${questionNumber + 1}<span class="spanColor"> / ${numDomande}</span>`;
-  quiz.appendChild(divQuestionNumber);
-  tempo();
-
-  questionNumber++;
 };
 //?-----------------------------------------Welcome Page---------------------------
 const start = () => {
