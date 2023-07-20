@@ -26,7 +26,6 @@ body {
   padding: 10px 90px 5px;
   margin: 0 auto;
   font-family: "Inter", sans-serif;
-  height: 100vh;
 }
 
 #welcome p {
@@ -479,7 +478,7 @@ svg {
 #elencoRisposte {
   padding: 15px;
   margin: 50px auto;
-  width: 400px;
+  width: 80%;
   min-height: 350px;
   border-radius: 10px;
   background-color: rgba(20, 56, 236, 0);
@@ -500,7 +499,7 @@ svg {
 }
 
 #listaRisposte li {
-  line-height: 25px;
+  line-height: 30px;
 }
 
 #elencoRisposte button {

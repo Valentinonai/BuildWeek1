@@ -703,11 +703,11 @@ const rispUtente = () => {
     const li = document.createElement("li");
     console.log(risposteUtente);
     if (risposteCorrette[i] === "--------") {
-      li.innerHTML = `<span style="color:red">${risposteUtente[i]}</span>`;
+      li.innerHTML = `<span style="font-style: italic">${questions[i].question}</span><br><span style="color:red">${risposteUtente[i]}</span><br><span style="color:red">&#10008;</span> ${questions[i].correct_answer}`;
     } else if (risposteCorrette[i] === risposteUtente[i]) {
-      li.innerHTML = `<span style="color:green">${risposteUtente[i]}</span>`;
+      li.innerHTML = `<span style="font-style: italic">${questions[i].question}</span><br><span style="color:green">&#10003; ${risposteUtente[i]}</span>`;
     } else {
-      li.innerHTML = `<span style="color:red">${risposteUtente[i]}</span><br><span style="color:green">${risposteCorrette[i]}</span>`;
+      li.innerHTML = `<span style="font-style: italic">${questions[i].question}</span><br><span style="color:red">&#10008; ${risposteUtente[i]}</span><br><span style="color:green">${risposteCorrette[i]}</span>`;
     }
     ol.appendChild(li);
   }
