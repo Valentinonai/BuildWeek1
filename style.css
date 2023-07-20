@@ -7,7 +7,8 @@
 #benchmark,
 #review,
 #results,
-#welcome {
+#welcome,
+#elencoRisposte {
   display: none;
   margin: 30px;
   margin-inline: 30px;
@@ -388,6 +389,8 @@ svg {
 
 #buttonRate {
   text-align: center;
+  display: flex;
+  justify-content: space-around;
 }
 
 #buttonRate button {
@@ -397,7 +400,7 @@ svg {
   box-shadow: 0px 0px 8px 5px white;
 }
 #buttonRate button:active {
-  box-shadow: none;
+  box-shadow: 0px 0px 4px 2px white;
 }
 
 .percentualePunteggio {
@@ -472,4 +475,51 @@ svg {
 
 .voto {
   position: absolute;
+}
+
+/* Lista risposte */
+
+#elencoRisposte {
+  padding: 15px;
+  margin: 50px auto;
+  width: 400px;
+  min-height: 350px;
+  border-radius: 10px;
+  background-color: rgba(20, 56, 236, 0);
+  color: white;
+  box-shadow: 0 0 40px 10px grey;
+  text-align: center;
+}
+#elencoRisposte h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 40px;
+  color: #d20093;
+}
+#listaRisposte {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: white;
+  text-align: left;
+}
+
+#listaRisposte li {
+  line-height: 25px;
+}
+
+#elencoRisposte button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  box-shadow: 0px 0px 8px 5px white;
+  cursor: pointer;
+
+  border: none;
+  width: 200px;
+  height: 40px;
+  font-size: 25px;
+  font-weight: bold;
+  display: inline-block;
+}
+#elencoRisposte button:active {
+  box-shadow: 0px 0px 4px 2px white;
 }

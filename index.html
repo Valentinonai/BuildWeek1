@@ -86,7 +86,10 @@
           <p>Wrong</p>
         </div>
       </div>
-      <div id="buttonRate"><button class="button" class="button2">RATE US</button></div>
+      <div id="buttonRate">
+        <button id="button3" class="button" class="button2">RATE US</button
+        ><button class="button" onclick="rispUtente()">Elenco risposte</button>
+      </div>
     </div>
 
     <div id="review" class="background">
@@ -112,6 +115,11 @@
       <input type="text" name="" id="inputReview" placeholder="Write your comment here" required />
 
       <a href="https://epicode.com" target="_blank"><button class="button" id="button2">MORE INFO</button></a>
+    </div>
+    <div id="elencoRisposte">
+      <h2>Elenco risposte</h2>
+      <ol id="listaRisposte"></ol>
+      <button id="exit" onclick="hide()">&#8678;</button>
     </div>
     <script src="./index.js"></script>
   </body>

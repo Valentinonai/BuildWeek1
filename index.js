@@ -513,6 +513,8 @@ let punteggio = 0,
 const tTot = 10;
 let questions = [];
 let numDomande, difficolta;
+const risposteUtente = [],
+  risposteCorrette = [];
 
 //TODO----------------------FORM DI INSERIMENTO-------------------------------------
 const datiIniziali = () => {
@@ -629,7 +631,7 @@ We are sorry, try again
     document.documentElement.style.setProperty("--my--value-stroke1", 474 - (474 * percentualeCorretta) / 100 + 20);
   }
   grafico.appendChild(voto);
-  const button = document.getElementById("buttonRate");
+  const button = document.getElementById("button3");
   button.onclick = valutazione;
 };
 
@@ -658,11 +660,18 @@ const controllaLive = () => {
 const controlla = () => {
   let answer = document.getElementsByClassName("radioAnswer");
   answer = Array.from(answer);
+
   const selezione = answer.find((x) => x.checked === true);
-  if (selezione !== "undefined") {
+  console.log(selezione);
+  if (selezione !== undefined) {
+    risposteUtente.push(selezione.value); //!Variabili per riepilogo risposte
+    risposteCorrette.push(questions[questionNumber - 1].correct_answer);
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       punteggio++;
     }
+  } else if (selezione === undefined) {
+    risposteUtente.push("--------"); //!Variabili per riepilogo risposte
+    risposteCorrette.push("--------");
   }
 };
 
@@ -763,3 +772,33 @@ const buttonWelcom = document.getElementById("buttonWelcom");
 const check = document.getElementById("homecheck");
 check.addEventListener("change", start);
 buttonWelcom.onclick = generaDomanda;
+
+//TODO----------------------Elenco Risposte------------------------
+
+const rispUtente = () => {
+  const elencoRisposte = document.getElementById("elencoRisposte");
+  elencoRisposte.style.display = "block";
+  const results = document.getElementById("results");
+  results.style.display = "none";
+  const ol = document.getElementById("listaRisposte");
+  ol.innerHTML = "";
+  for (let i = 0; i < risposteCorrette.length; i++) {
+    const li = document.createElement("li");
+    console.log(risposteUtente);
+    if (risposteCorrette[i] === "--------") {
+      li.innerHTML = `<span style="color:red">${risposteUtente[i]}</span>`;
+    } else if (risposteCorrette[i] === risposteUtente[i]) {
+      li.innerHTML = `<span style="color:green">${risposteUtente[i]}</span>`;
+    } else {
+      li.innerHTML = `<span style="color:red">${risposteUtente[i]}</span><br><span style="color:green">${risposteCorrette[i]}</span>`;
+    }
+    ol.appendChild(li);
+  }
+};
+
+const hide = () => {
+  const elencoRisposte = document.getElementById("elencoRisposte");
+  elencoRisposte.style.display = "none";
+  const results = document.getElementById("results");
+  results.style.display = "block";
+};
