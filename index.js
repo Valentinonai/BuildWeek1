@@ -513,7 +513,6 @@ let punteggio = 0,
 const tTot = 10;
 let questions = [];
 let numDomande, difficolta;
-if (numDomande < 1 || numDomande > 10) location.reload(true);
 
 //TODO----------------------FORM DI INSERIMENTO-------------------------------------
 const datiIniziali = () => {
