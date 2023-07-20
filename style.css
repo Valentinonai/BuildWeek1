@@ -12,6 +12,9 @@
   margin: 30px;
   margin-inline: 30px;
 }
+input:focus {
+  outline: none;
+}
 #review {
   margin-inline: 30px;
 }
@@ -276,7 +279,7 @@ svg {
   border-radius: 10px;
   background-color: rgba(20, 56, 236, 0);
   color: white;
-  box-shadow: 0 0 40px 10px grey;
+  box-shadow: 0 0 40px 10px black;
   text-align: center;
 }
 #scelte h2 {
@@ -481,7 +484,7 @@ svg {
   border-radius: 10px;
   background-color: rgba(20, 56, 236, 0);
   color: white;
-  box-shadow: 0 0 40px 10px grey;
+  box-shadow: 0 0 40px 10px black;
   text-align: center;
 }
 #elencoRisposte h2 {
