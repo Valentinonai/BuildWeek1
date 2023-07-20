@@ -435,17 +435,16 @@ const risposteUtente = [],
 //TODO----------------------FORM DI INSERIMENTO-------------------------------------
 const datiIniziali = () => {
   numDomande = document.getElementById("numDomande").value;
-  numDomande = parseInt(numDomande);
-  console.log(numDomande);
   difficolta = document.getElementsByClassName("radioDifficolta");
   difficolta = Array.from(difficolta);
   difficolta = difficolta.find((x) => x.checked === true);
   difficolta = difficolta.value;
   questions = database.filter((x) => x.difficulty === difficolta);
-  if (numDomande < 1 || numDomande > questions.length) {
+  if (numDomande < 1 || numDomande > questions.length || numDomande === "e") {
     alert("Numero domande troppo grande o minore di zero");
     location.reload(true);
   }
+  numDomande = parseInt(numDomande);
   const welcome = document.getElementById("welcome");
   const scelte = document.getElementById("scelte");
   scelte.style.display = "none";
