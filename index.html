@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="scelte">
+      <h2>Scelte Test</h2>
+      <label for="numeroDomande">A quante domande vuoi rispondere?</label>
+      <input type="number" id="numDomande" placeholder="Numero domande" name="numeroDomande" />
+      <div id="diff">
+        <input type="radio" class="radioDifficolta" value="easy" name="difficolta" />
+        <label for="easy">easy</label>
+        <input type="radio" class="radioDifficolta" value="medium" name="difficolta" />
+        <label for="medium">medium</label>
+        <input type="radio" class="radioDifficolta" value="hard" name="difficolta" />
+        <label for="hard">hard</label>
+      </div>
+      <button id="startScelte">Start</button>
+    </div>
     <div id="welcome" class="background">
       <header>
         <img src="epicode_logo.png" alt="error" class="logo" />
@@ -52,9 +66,29 @@
       <div id="quiz"></div>
     </div>
 
-    <div id="results" class="background">
-      <div class="logo">
-        <img src="epicode_logo.png" alt="error" id="logo" />
+    <div id="results">
+      <div><img src="epicode_logo.png" alt="error" class="logo" /></div>
+      <div>
+        <h1>Results</h1>
+        <h2>The summary of your answers:</h2>
+      </div>
+      <div id="mainResults">
+        <div id="correctAnswers">
+          <p>Correct</p>
+        </div>
+        <div id="grafico">
+          <svg id="grafico1" viewBox="0 0 170 170" width="400" height="400">
+            <circle id="cerchio3" cx="50%" cy="50%" r="75" />
+            <circle id="cerchio4" cx="50%" cy="50%" r="75" />
+          </svg>
+        </div>
+        <div id="wrongAnswers">
+          <p>Wrong</p>
+        </div>
+      </div>
+      <div id="buttonRate">
+        <button id="button3" class="button" class="button2">RATE US</button
+        ><button class="button" onclick="rispUtente()">ANSWERS</button>
       </div>
     </div>
 
@@ -78,9 +112,14 @@
       </div>
 
       <h3>Leave us an open feedback about you experience so far</h3>
-      <input type="text" name="" id="inputReview" required placeholder="Write your comment here" />
+      <input type="text" name="" id="inputReview" placeholder="Write your comment here" required />
 
-      <button class="button" id="button2">MORE INFO</button>
+      <a href="https://epicode.com" target="_blank"><button class="button" id="button2">MORE INFO</button></a>
+    </div>
+    <div id="elencoRisposte">
+      <h2>Answers</h2>
+      <ol id="listaRisposte"></ol>
+      <button id="exit" onclick="hide()">&#8678;</button>
     </div>
     <script src="./index.js"></script>
   </body>

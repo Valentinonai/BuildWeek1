@@ -1,8 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
+:root {
+  --my--value-stroke: 0;
+}
 
 #benchmark,
+#review,
+#results,
 #welcome,
-#results {
+#elencoRisposte {
   display: none;
   margin: 30px;
   margin-inline: 30px;
@@ -18,6 +23,7 @@ body {
   padding: 10px 90px 5px;
   margin: 0 auto;
   font-family: "Inter", sans-serif;
+  height: 100vh;
 }
 
 #welcome p {
@@ -106,12 +112,11 @@ button:active {
 }
 .domanda {
   font-size: 40px;
-  margin-top: 30px;
   margin-bottom: 60px;
   margin-inline: auto;
-  width: 800px;
   text-align: center;
   font-size: 25px;
+  height: 50px;
 }
 .radioAnswer {
   display: inline-block;
@@ -122,22 +127,20 @@ button:active {
 }
 .label {
   font-family: "Inter", sans-serif;
-  font-size: x-large;
+  font-size: 15px;
   font-weight: 700;
 }
 .divQuestionNumber {
   text-align: center;
   font-size: x-large;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   text-align: bottom;
 }
 .divAnswer {
   padding-bottom: 30px;
-
-  display: inline-block;
-  width: 400px;
-  margin-left: 40%;
-
+  display: block;
+  margin-left: 35%;
   text-align: left;
 }
 .nextButton {
@@ -146,7 +149,7 @@ button:active {
   background-color: #d20093;
   border-radius: 10px;
   color: white;
-  margin-top: 40px;
+  margin-top: 10px;
   box-shadow: 0px 0px 15px 8px #d20093cc;
   border: none;
   display: block;
@@ -154,6 +157,9 @@ button:active {
 }
 .nextButton:active {
   box-shadow: 0px 0px 8px 4px #d20093;
+}
+#review {
+  text-align: center;
 }
 #review h1 {
   text-align: center;
@@ -164,7 +170,7 @@ button:active {
 }
 #review h2 {
   text-align: center;
-  width: 1000px;
+  margin-inline: auto;
   font-weight: 400;
   font-family: "Inter", sans-serif;
   font-size: x-large;
@@ -174,6 +180,7 @@ button:active {
   text-align: center;
   width: 1000px;
   font-weight: 400;
+  margin-inline: auto;
   font-family: "Inter", sans-serif;
   margin-top: 80px;
   display: block;
@@ -189,9 +196,11 @@ button:active {
   background-color: transparent;
   width: 1000px;
   display: block;
+  margin-inline: auto;
   margin-block: 40px;
   margin-bottom: 100px;
   padding-bottom: 10px;
+  color: white;
 }
 #button2 {
   margin-inline: 40%;
@@ -255,10 +264,255 @@ svg {
 .rateStar {
   display: inline-block;
   justify-content: space-between;
+}
+/* Menu di scelta */
+
+#scelte {
+  padding: 15px;
+  margin: 100px auto;
+  width: 400px;
+  height: 350px;
+  border-radius: 10px;
+  background-color: rgba(20, 56, 236, 0);
+  color: white;
+  box-shadow: 0 0 40px 10px grey;
+  text-align: center;
+}
+#scelte h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 40px;
+  color: #d20093;
+}
+#scelte label:first-child {
+  display: block;
+  margin: 0 auto;
+}
+#numDomande {
+  width: 300px;
+  display: block;
+  margin: 20px auto;
+  background-color: transparent;
+  border: none;
+  padding-bottom: 10px;
+  margin-top: 30px;
+  border-bottom: 2px solid #d20093;
+  color: white;
+}
+#diff {
+  margin: 0 auto;
+  padding: 0;
+}
+#scelte button {
+  display: block;
+  margin: 30px auto;
+  width: 200px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  background-color: #d20093;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0px 0px 15px 8px #d20093cc;
+  border: none;
+}
+#scelte button:active {
+  box-shadow: 0px 0px 8px 1px #d20093;
+}
+.rateStar {
+  display: inline-block;
+  justify-content: space-between;
   filter: brightness(00%);
   margin-inline: 15px;
   height: 40px;
 }
 .starOn {
   filter: brightness(100%);
+}
+.starAccendi {
+  filter: brightness(100%);
+}
+
+/* Classi Live Answer */
+.Green {
+  color: green;
+}
+
+.Red {
+  color: red;
+}
+
+.answerGroup {
+  height: 300px;
+}
+/* Finestra Results */
+
+#results h1 {
+  text-align: center;
+  margin: 0 auto;
+
+  font-weight: 700;
+  font-size: 70px;
+  font-family: "Outfit", sans-serif;
+}
+#results h2 {
+  margin-block: 0;
+  font-weight: 400;
+  text-align: center;
+}
+#correctAnswers,
+#grafico,
+#wrongAnswers {
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+}
+#correctAnswers {
+  width: 20%;
+}
+#correctAnswers p:first-of-type {
+  font-family: "Inter", sans-serif;
+  font-size: 40px;
+  margin-block-end: 5px;
+  text-align: left;
+}
+#wrongAnswers p:first-of-type {
+  font-family: "Inter", sans-serif;
+  font-size: 50px;
+  margin-block-end: 5px;
+  text-align: right;
+}
+#wrongAnswers {
+  width: 20%;
+}
+
+#buttonRate {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+#buttonRate button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  box-shadow: 0px 0px 8px 5px white;
+}
+#buttonRate button:active {
+  box-shadow: 0px 0px 4px 2px white;
+}
+
+.percentualePunteggio {
+  font-size: 50px;
+  margin: 0;
+  text-align: left;
+  font-weight: 700;
+}
+.paragrafoPunteggio {
+  font-size: 18px;
+  text-align: left;
+  margin: 0;
+}
+.percentualePunteggioSbagliato {
+  font-size: 50px;
+  margin: 0;
+  text-align: right;
+  font-weight: 700;
+}
+.paragrafoPunteggioSbagliato {
+  font-size: 18px;
+  text-align: right;
+  margin: 0;
+}
+/* Grafico Results */
+#cerchio3 {
+  fill: none;
+  stroke: #d20093;
+  stroke-width: 18px;
+  stroke-dasharray: 472px;
+  stroke-dashoffset: 0;
+}
+#cerchio4 {
+  fill: none;
+  stroke: #0ff;
+  stroke-width: 18px;
+  stroke-dasharray: 472px;
+  stroke-dashoffset: 0;
+  animation: anim 2s linear forwards;
+}
+@keyframes anim {
+  100% {
+    stroke-dashoffset: var(--my--value-stroke);
+  }
+}
+#grafico1 {
+  position: static;
+  left: 40px;
+  top: 100px;
+  margin-top: 50px;
+}
+#grafico {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 500px;
+  width: 55%;
+}
+
+#mainResults {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.voto {
+  position: absolute;
+}
+
+/* Lista risposte */
+
+#elencoRisposte {
+  padding: 15px;
+  margin: 50px auto;
+  width: 400px;
+  min-height: 350px;
+  border-radius: 10px;
+  background-color: rgba(20, 56, 236, 0);
+  color: white;
+  box-shadow: 0 0 40px 10px grey;
+  text-align: center;
+}
+#elencoRisposte h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 40px;
+  color: #d20093;
+}
+#listaRisposte {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: white;
+  text-align: left;
+}
+
+#listaRisposte li {
+  line-height: 25px;
+}
+
+#elencoRisposte button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  box-shadow: 0px 0px 8px 5px white;
+  cursor: pointer;
+  margin-top: 20px;
+  border: none;
+  width: 200px;
+  height: 40px;
+  font-size: 25px;
+  font-weight: bold;
+  display: inline-block;
+}
+#elencoRisposte button:active {
+  box-shadow: 0px 0px 4px 2px white;
 }
