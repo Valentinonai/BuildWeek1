@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
+:root {
+  --my--value-stroke: 0;
+  --my--value-stroke1: 0;
+}
 
 #benchmark,
 #review,
@@ -432,6 +436,18 @@ svg {
   stroke-width: 18px;
   stroke-dasharray: 472px;
   stroke-dashoffset: 0;
+  animation: anim 2s linear forwards;
+}
+@keyframes anim {
+  80% {
+    stroke-dashoffset: var(--my--value-stroke);
+  }
+  90% {
+    stroke-dashoffset: var(--my--value-stroke1);
+  }
+  100% {
+    stroke-dashoffset: var(--my--value-stroke);
+  }
 }
 #grafico1 {
   position: static;
