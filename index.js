@@ -619,7 +619,6 @@ const finestraPunteggio = () => {
    </span> </span></span>`;
     // circle2.style.strokeDashoffset = 474 - (474 * percentualeCorretta) / 100;
     document.documentElement.style.setProperty("--my--value-stroke", 474 - (474 * percentualeCorretta) / 100);
-    document.documentElement.style.setProperty("--my--value-stroke1", 474 - (474 * percentualeCorretta) / 100 + 20);
   } else {
     voto.innerHTML = `<span style="font-size: 20px">You Failed<br>
   <span style="color: #0ff; font-weight: bold;">You didn't pass the exam.</span><br>
@@ -628,7 +627,6 @@ We are sorry, try again
  </span> </span></span>`;
     // circle2.style.strokeDashoffset = 474 - (474 * percentualeCorretta) / 100;
     document.documentElement.style.setProperty("--my--value-stroke", 474 - (474 * percentualeCorretta) / 100);
-    document.documentElement.style.setProperty("--my--value-stroke1", 474 - (474 * percentualeCorretta) / 100 + 20);
   }
   grafico.appendChild(voto);
   const button = document.getElementById("button3");
