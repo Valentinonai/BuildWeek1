@@ -440,10 +440,11 @@ const datiIniziali = () => {
   difficolta = difficolta.find((x) => x.checked === true);
   difficolta = difficolta.value;
   questions = database.filter((x) => x.difficulty === difficolta);
-  if (numDomande < 1 || numDomande > questions.length) {
+  if (numDomande < 1 || numDomande > questions.length || numDomande === "e") {
     alert("Numero domande troppo grande o minore di zero");
     location.reload(true);
   }
+  numDomande = parseInt(numDomande);
   const welcome = document.getElementById("welcome");
   const scelte = document.getElementById("scelte");
   scelte.style.display = "none";
@@ -558,7 +559,7 @@ const controllaLive = () => {
   const selezione = answer.find((x) => x.checked === true);
   const selezione2 = label.find((x) => x.innerText === selezione.value);
 
-  if (selezione !== "undefined") {
+  if (selezione !== undefined) {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       selezione2.classList.add("Green");
       answer.map((x) => (x.disabled = true));
