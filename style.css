@@ -322,11 +322,17 @@ svg {
 #scelte button:active {
   box-shadow: 0px 0px 8px 1px #d20093;
 }
+#review h1 {
+  font-size: 50px;
+}
+#review h2 {
+  font-size: 30px;
+}
 .rateStar {
   display: inline-block;
   justify-content: space-between;
   filter: brightness(00%);
-  margin-inline: 15px;
+  margin-inline: 5px;
   height: 40px;
 }
 .starOn {
