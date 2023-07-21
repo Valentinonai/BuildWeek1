@@ -441,7 +441,7 @@ const datiIniziali = () => {
   difficolta = difficolta.value;
   questions = database.filter((x) => x.difficulty === difficolta);
   if (numDomande < 1 || numDomande > questions.length || numDomande === "e") {
-    alert("Numero domande troppo grande o minore di zero");
+    alert("Numero domande troppo grande o minore di uno");
     location.reload(true);
   }
   numDomande = parseInt(numDomande);
