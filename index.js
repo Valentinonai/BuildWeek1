@@ -461,7 +461,7 @@ startButton.onclick = datiIniziali;
 const stars = document.getElementsByClassName("rateStar");
 const stella = Array.from(stars);
 function star(event) {
-  stella.map((x) => x.classList.remove("starOn"));
+  stella.forEach((x) => x.classList.remove("starOn"));
   for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
     stars[i].classList.add("starOn");
   }
@@ -469,7 +469,7 @@ function star(event) {
 //TODO----------------------------------------------
 //TODO------------------Feedback dinamico----------
 const onStar = (event) => {
-  stella.map((x) => x.classList.remove("starOn"));
+  stella.forEach((x) => x.classList.remove("starOn"));
   for (let i = 0; i < parseInt(event.currentTarget.title); i++) {
     stars[i].classList.add("starAccendi");
   }
@@ -479,8 +479,8 @@ const offStar = (event) => {
     stars[i].classList.remove("starAccendi");
   }
 };
-stella.map((x) => x.addEventListener("mouseover", onStar));
-stella.map((x) => x.addEventListener("mouseout", offStar));
+stella.forEach((x) => x.addEventListener("mouseover", onStar));
+stella.forEach((x) => x.addEventListener("mouseout", offStar));
 
 const valutazione = () => {
   const voto = document.getElementById("results");
@@ -562,10 +562,10 @@ const controllaLive = () => {
   if (selezione !== undefined) {
     if (selezione.value === questions[questionNumber - 1].correct_answer) {
       selezione2.classList.add("Green");
-      answer.map((x) => (x.disabled = true));
+      answer.forEach((x) => (x.disabled = true));
     } else {
       selezione2.classList.add("Red");
-      answer.map((x) => (x.disabled = true));
+      answer.forEach((x) => (x.disabled = true));
     }
   }
 };
@@ -669,7 +669,7 @@ const generaDomanda = () => {
     nextButton.addEventListener("mousedown", controllaLive);
     nextButton.addEventListener("click", controlla);
     nextButton.addEventListener("click", cancellaTempo);
-    nextButton.addEventListener("click", generaDomanda);
+    nextButton.addEventListener("click", () => setTimeout(generaDomanda, 1000));
 
     const divQuestionNumber = document.createElement("div");
     divQuestionNumber.classList.add("divQuestionNumber");
@@ -703,11 +703,11 @@ const rispUtente = () => {
     const li = document.createElement("li");
     console.log(risposteUtente);
     if (risposteCorrette[i] === "--------") {
-      li.innerHTML = `<span style="color:red">${risposteUtente[i]}</span>`;
+      li.innerHTML = `<span style="font-style: italic">${questions[i].question}</span><br><span style="color:red">${risposteUtente[i]}</span><br><span style="color:red">&#10008;</span> ${questions[i].correct_answer}`;
     } else if (risposteCorrette[i] === risposteUtente[i]) {
-      li.innerHTML = `<span style="color:green">${risposteUtente[i]}</span>`;
+      li.innerHTML = `<span style="font-style: italic">${questions[i].question}</span><br><span style="color:green">&#10003; ${risposteUtente[i]}</span>`;
     } else {
-      li.innerHTML = `<span style="color:red">${risposteUtente[i]}</span><br><span style="color:green">${risposteCorrette[i]}</span>`;
+      li.innerHTML = `<span style="font-style: italic">${questions[i].question}</span><br><span style="color:red">&#10008; ${risposteUtente[i]}</span><br><span style="color:green">${risposteCorrette[i]}</span>`;
     }
     ol.appendChild(li);
   }
